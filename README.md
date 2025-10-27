@@ -2,9 +2,7 @@
 
 
 
-###### **En este crearemos una tienda con usuarios, ventas y productos, usando el framework de Django y personalizando con Bootstrap e CrispyForms que**
-
-###### **se usa para la creacion de formularios facilitandolo y dandole un major estilo visual.**
+###### **En este crearemos una tienda con usuarios, ventas y productos, usando el framework de Django y personalizando con Bootstrap e CrispyForms** 
 
 
 

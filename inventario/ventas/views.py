@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -29,8 +30,9 @@ class VentaListView(ListView):
         context["search_query"] = self.request.GET.get("search", "")
         return context
     
+    
 class VentaDetailView(DetailView):
-    model = Producto
+    model = Venta
     template_name = "ventas/venta_detail.html"
     context_object_name = "producto"
 
@@ -47,7 +49,7 @@ class VentaCreateView(CreateView):
     model = Venta
     form_class = VentaForm
     template_name = "ventas/venta_form.html"
-    success_url = reverse_lazy("ventas:venta_list")
+    success_url = reverse_lazy("productos:producto_list")
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -73,3 +75,38 @@ class VentaCreateView(CreateView):
 
         messages.success(self.request, "Venta registrada exitosamente")
         return response
+    
+    def agregar_carrito(self, request, *args, **kwargs):
+        producto_id = request.POST.get("producto_id")
+        cantidad = int(request.POST.get("cantidad", 1))
+        producto = Producto.objects.get(id=producto_id)
+
+        carrito = request.session.get("carrito", {})
+        if producto_id in carrito:
+            carrito[producto_id] += cantidad
+        else:
+            carrito[producto_id] = cantidad
+
+        request.session["carrito"] = carrito
+        messages.success(request, f"Producto {producto.nombre} agregado al carrito.")
+        return self.get(request, *args, **kwargs)
+    
+    def ver_carrito(self, request, *args, **kwargs):
+        carrito = request.session.get("carrito", {})
+        productos = []
+        total = 0
+        for producto_id, cantidad in carrito.items():
+            producto = Producto.objects.get(id=producto_id)
+            subtotal = producto.precio * cantidad
+            productos.append({
+                "producto": producto,
+                "cantidad": cantidad,
+                "subtotal": subtotal
+            })
+            total += subtotal
+
+        context = {
+            "productos": productos,
+            "total": total
+        }
+        return render(request, "ventas/venta_list.html", context)
