@@ -1,0 +1,36 @@
+{% load bootstrap4 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de inventario - {% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .product-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+        .badge-lg {
+            font-size: 0.9rem;
+            padding: 0.35rem 0.65rem;
+        }
+    </style>
+</head>
+<body>
+   
+   {% block content %}
+    
+   {% endblock content %}
+     
+</body>
+</html>

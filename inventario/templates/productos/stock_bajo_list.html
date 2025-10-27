@@ -1,0 +1,58 @@
+{% extends 'productos/base.html' %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+{% block title %}Movimiento de Stock{% endblock %}
+{% block header %}Movimiento de Stock{% endblock %}
+
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Productos con Stock Bajo</h2>
+
+  {% if productos %}
+    <div class="alert alert-warning" role="alert">
+      ⚠️ Los siguientes productos tienen un nivel de stock inferior al mínimo permitido.
+    </div>
+
+    <table class="table table-bordered table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Stock Actual</th>
+          <th>Stock Mínimo</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for producto in productos %}
+        <tr class="{% if producto.stock == 0 %}table-danger{% elif producto.stock < producto.stock_minimo %}table-warning{% endif %}">
+          <td>{{ producto.nombre }}</td>
+          <td>${{ producto.precio }}</td>
+          <td>{{ producto.stock }}</td>
+          <td>{{ producto.stock_minimo }}</td>
+          <td>
+            {% if producto.stock == 0 %}
+              <span class="badge badge-danger">Sin stock</span>
+            {% elif producto.stock < producto.stock_minimo %}
+              <span class="badge badge-warning">Stock bajo</span>
+            {% else %}
+              <span class="badge badge-success">OK</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="alert alert-success text-center" role="alert">
+      ✅ Todos los productos tienen stock suficiente.
+    </div>
+  {% endif %}
+
+  <div class="text-center mt-4">
+    <a href="{% url 'producto_list' %}" class="btn btn-secondary">Volver al listado</a>
+  </div>
+</div>
+{% endblock %}

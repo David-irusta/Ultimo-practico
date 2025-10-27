@@ -1,0 +1,15 @@
+{% extends 'productos/base.html' %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <h1>Eliminar producto</h1>
+    <p>Estas seguro de eliminar? {{ producto.nombre }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'productos:producto_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock content %}
+    
