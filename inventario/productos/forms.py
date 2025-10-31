@@ -38,7 +38,11 @@ class ProductoForm(forms.ModelForm):
 
     def clean_sku(self):
         sku = self.cleaned_data.get("sku")
-        if sku and Producto.objects.filter(sku=sku).exists():
+        instance = getattr(self, 'instance', None)
+        if instance and instance.pk:
+            if sku == instance.sku:
+                return sku
+        elif sku and Producto.objects.filter(sku=sku).exists():
             raise ValidationError("El SKU debe ser único. Ya existe un producto con este SKU.")
         return sku
 

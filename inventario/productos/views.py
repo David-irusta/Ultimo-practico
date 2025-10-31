@@ -158,6 +158,11 @@ class AjusteStockView(FormView):
     form_class = AjusteStockForm
     template_name = "productos/ajuste_stock_form.html"
 
+    class Meta:
+        model = Producto
+        fields = ['stock']
+        labels = {'stock': 'Cantidad de stock'}
+
     def get_form_kwargs(self):
         """Pasa la instancia del producto al formulario para que pueda pre-llenar los datos."""
         kwargs = super().get_form_kwargs()
