@@ -4,6 +4,6 @@ from .models import Venta
 # Register your models here.
 @admin.register(Venta)
 class VentaAdmin(admin.ModelAdmin):
-    list_display = ['codigo', 'cliente', 'fecha', 'total']
-    list_filter = ['fecha']
-    search_fields = ['cliente_nombre', 'cliente_email']
+    list_display = ['cliente', 'fecha', 'total']
+    list_filter = ['fecha', 'cliente']
+    search_fields = ['codigo', 'cliente__nombre', 'cliente__apellido']

@@ -1,15 +1,32 @@
-{% extends 'ventas:base.html' %}
-{% load bootstrap4 %}
+{% extends 'ventas/base.html' %}
 {% load crispy_forms_tags %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Venta</title>
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Crear Venta</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
 
-{% block content %}
-  <div class="container mt-4">
-    <h2>{{ view.title }}</h2>
-    <form method="post" novalidate>
-      {% csrf_token %}
-      {% crispy form %}
-      <button type="submit" class="btn btn-primary">Guardar</button>
-      <a href="{% url 'ventas:venta_list' %}" class="btn btn-secondary">Cancelar</a>
+        <h4>Items de la venta</h4>
+        {{ formset.management_form }}
+        {% for item_form in formset %}
+            <div class="card mb-2 p-2">
+                {{ item_form|crispy }}
+                {% if item_form.instance.pk %}
+                    <input type="checkbox" name="{{ item_form.prefix }}-DELETE"> Eliminar
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-success">Confirmar Venta</button>
     </form>
-  </div>
-{% endblock content %}
+</div>
+</body>
+</html>

@@ -9,7 +9,15 @@ class VentaForm(forms.ModelForm):
         model = Venta
         fields = ['codigo', 'cliente', 'fecha']
 
-    def __init__(self, *args, **kwargs):
+ItemVentaFormSet = inlineformset_factory(
+    Venta,
+    ItemVenta,
+    fields=('producto', 'cantidad', 'precio_unitario'),
+    extra=1,
+    can_delete=True
+)
+
+'''def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
@@ -22,5 +30,4 @@ class ItemVentaForm(forms.ModelForm):
 
 ItemVentaFormSet = inlineformset_factory(
     Venta, ItemVenta, form=ItemVentaForm,
-    extra=1, can_delete=True, min_num=1, validate_min=True
-)
+    extra=1, can_delete=True, min_num=1, validate_min=True'''

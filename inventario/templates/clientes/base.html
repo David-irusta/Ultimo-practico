@@ -1,7 +1,7 @@
 {% load bootstrap4 %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
         .table-responsive {
             overflow-x: auto;
         }
-        .product-img {
+        .client-img {
             width: 50px;
             height: 50px;
             object-fit: cover;
@@ -27,26 +27,18 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'productos:producto_list' %}">
-                <i class="fas fa-boxes"></i> Sistema de Inventario
+  <nav>
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'productos:producto_list' %}">
+            <i class="fas fa-users"></i> Sistema de Inventario
+        </a>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'ventas:venta_list' %}">
+            <i class="fas fa-shopping-cart"></i> Ventas
             </a>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'ventas:venta_list' %}">
-                <i class="fas fa-shopping-cart"></i> Ventas
-                </a>
-            </li>
-            <li class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container">
-                    <a class="navbar-brand" href="{% url 'ventas:venta_form' %}">
-                        <i class="fas fa-cart-plus"></i> Carrito de Venta
-                    </a>
-                </div>
-
-            </li>
-        </div>
-    </nav>
+        </li>
+    </div>
+  </nav>  
 
     <div class="container mt-4">
         {% bootstrap_messages %}
