@@ -21,7 +21,7 @@ class Producto(models.Model):
 
     nombre = models.CharField("Nombre", max_length=50)
     descripcion = models.CharField("Descripcion", max_length=200)
-    precio = models.DecimalField("Precio", max_digits=10, decimal_places=2)
+    precio_unitario = models.DecimalField("Precio", max_digits=10, decimal_places=2)
     sku = models.CharField("sku", max_length=20, unique=True)
     stock = models.IntegerField(default=0)
     stock_minimo = models.IntegerField(default=5, verbose_name="Stock Minimo")

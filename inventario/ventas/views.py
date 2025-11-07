@@ -4,7 +4,8 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Q
 from django.utils import timezone
-from .models import Producto, Venta, MovimientoStock
+from .models import Venta
+from productos.models import Producto, MovimientoStock
 from .forms import VentaForm
 from django.shortcuts import redirect
 
@@ -79,8 +80,8 @@ class VentaCreateView(CreateView):
                 MovimientoStock.objects.create(
                     producto=producto,
                     cantidad=-detalle.cantidad,
-                    tipo_movimiento='VENTA',
-                    fecha_movimiento=timezone.now()
+                    tipo='VENTA',
+                    fecha=timezone.now()
                 )
             venta.total = total
             venta.save()
@@ -88,3 +89,15 @@ class VentaCreateView(CreateView):
             return redirect('ventas:venta_detail', pk=venta.pk)
         else:
             return self.render_to_response(self.get_context_data(form=form))
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.POST:
+            from .forms import VentaDetalleFormSet
+            context['formset'] = VentaDetalleFormSet(self.request.POST)
+        else:
+            from .forms import VentaDetalleFormSet
+            context['formset'] = VentaDetalleFormSet()
+        return context
+    
+    

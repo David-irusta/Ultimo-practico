@@ -22,7 +22,7 @@ class ProductoForm(forms.ModelForm):
         # Vinculamos este formulario al modelo Producto
         model = Producto
         # Especificamos los campos que se incluirán en el formulario
-        fields = ["nombre", "descripcion", "precio", "sku", "stock", "stock_minimo", "imagen",]
+        fields = ["nombre", "descripcion", "precio_unitario", "sku", "stock", "stock_minimo", "imagen",]
         # Usamos widgets para personalizar la apariencia de los campos HTML
         widgets = {
             "descripcion": forms.Textarea(attrs={"rows": 3}),  # Cambia el campo de texto a un área de texto más grande
@@ -57,7 +57,7 @@ class ProductoForm(forms.ModelForm):
             Field("nombre"),
             Field("descripcion"),
             # 'PrependedText' añade un prefijo (ej: el símbolo de $) al campo de precio
-            PrependedText("precio", "$", placeholder="0.00"),
+            PrependedText("precio_unitario", "$", placeholder="0.00"),
             Field("stock"),
             Field("stock_minimo"),
             Field("imagen"),
@@ -77,12 +77,12 @@ class ProductoForm(forms.ModelForm):
     # --------------------------------------------------------------------------
     def clean_precio(self):
         # Obtiene el dato del formulario después de la limpieza inicial de Django
-        precio = self.cleaned_data.get("precio")
+        precio_unitario = self.cleaned_data.get("precio_unitario")
         # Si el precio existe y es menor o igual a cero, lanza un error de validación
-        if precio and precio <= 0:
+        if precio_unitario and precio_unitario <= 0:
             raise ValidationError("El precio debe ser mayor a cero")
         # Si la validación es exitosa, devuelve el valor del campo
-        return precio
+        return precio_unitario
     
     def clean_stock(self):
         stock = self.cleaned_data.get("stock")

@@ -1,13 +1,10 @@
 {% extends 'ventas/base.html' %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Nueva Venta</title>
-</head>
-<body>
+
+{% block title %}Crear Venta{% endblock %}
+
+{% block content %}
 <div class="container mt-4">
     <h2>Crear Venta</h2>
     <form method="post">
@@ -18,15 +15,38 @@
         {{ formset.management_form }}
         {% for item_form in formset %}
             <div class="card mb-2 p-2">
-                {{ item_form|crispy }}
-                {% if item_form.instance.pk %}
-                    <input type="checkbox" name="{{ item_form.prefix }}-DELETE"> Eliminar
-                {% endif %}
+                <div class="card-body">
+                    {# Mostrar el campo "product" primero si existe, como un select #}
+                    {% if item_form.product %}
+                        <div class="form-group">
+                            {{ item_form.product.label_tag }}
+                            {{ item_form.product }}
+                            {{ item_form.product.errors }}
+                        </div>
+                    {% endif %}
+
+                    {# Renderizar el resto de campos del formset (excluyendo product si ya lo mostramos) #}
+                    {% for field in item_form.visible_fields %}
+                        {% if field.name != 'product' %}
+                            <div class="form-group">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if item_form.instance.pk %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="{{ item_form.prefix }}-DELETE" id="{{ item_form.prefix }}-DELETE">
+                            <label class="form-check-label" for="{{ item_form.prefix }}-DELETE">Eliminar</label>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         {% endfor %}
 
         <button type="submit" class="btn btn-success">Confirmar Venta</button>
     </form>
 </div>
-</body>
-</html>
+{% endblock %}

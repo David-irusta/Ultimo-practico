@@ -29,7 +29,7 @@
         {% for producto in productos %}
         <tr class="{% if producto.stock == 0 %}table-danger{% elif producto.stock < producto.stock_minimo %}table-warning{% endif %}">
           <td>{{ producto.nombre }}</td>
-          <td>${{ producto.precio }}</td>
+          <td>${{ producto.precio_unitario }}</td>
           <td>{{ producto.stock }}</td>
           <td>{{ producto.stock_minimo }}</td>
           <td>
