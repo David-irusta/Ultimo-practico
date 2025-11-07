@@ -1,53 +1,15 @@
+{% extends 'ventas:base.html' %}
+{% load bootstrap4 %}
 {% load crispy_forms_tags %}
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Carrito de Venta</title>
-    <!-- Bootstrap 4 CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container mt-4">
-    <h3>Carrito de Venta</h3>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for id, item in carrito.items %}
-            <tr>
-                <td>{{ item.nombre }}</td>
-                <td>{{ item.cantidad }}</td>
-                <td>${{ item.precio }}</td>
-                <td>${{ item.precio|floatformat:2|add:item.cantidad|floatformat:2 }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <p><strong>Total: ${{ total }}</strong></p>
-
-    {% if form %}
-    <form method="post" class="mt-4">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <div class="d-flex justify-content-between">
-            <a href="{% url 'productos:producto_list' %}" class="btn btn-success" type="submit">Confirmar compra</a>
-            <a href="{% url 'productos:producto_list' %}" class="btn btn-danger">Cancelar</a>
-        </div>
+{% block content %}
+  <div class="container mt-4">
+    <h2>{{ view.title }}</h2>
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {% crispy form %}
+      <button type="submit" class="btn btn-primary">Guardar</button>
+      <a href="{% url 'ventas:venta_list' %}" class="btn btn-secondary">Cancelar</a>
     </form>
-    {% endif %}
-</div>
-<!-- Bootstrap 4 JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+  </div>
+{% endblock content %}
