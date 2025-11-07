@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView
 from django.urls import reverse_lazy
@@ -89,19 +88,3 @@ class VentaCreateView(CreateView):
             return redirect('ventas:venta_detail', pk=venta.pk)
         else:
             return self.render_to_response(self.get_context_data(form=form))
-        
-    
-=======
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, CreateView, DetailView
-from django.contrib import messages
-from django.db.models import Q, F
-from django.utils import timezone
-from .models import Venta, Producto, MovimientoStock
-from .forms import MovimientoStockFrom, AjusteStockFrom
-
-class VentaListView(ListView):
-    model = Venta
-    template_name = "ventas/venta_list.html"
-
->>>>>>> c866dbf (Models de ventas)
