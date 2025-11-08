@@ -32,19 +32,25 @@
             <a class="navbar-brand" href="{% url 'productos:producto_list' %}">
                 <i class="fas fa-boxes"></i> Sistema de Inventario
             </a>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'ventas:venta_list' %}">
-                <i class="fas fa-shopping-cart"></i> Ventas
-                </a>
-            </li>
-            <li class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container">
-                    <a class="navbar-brand" href="{% url 'ventas:venta_form' %}">
-                        <i class="fas fa-cart-plus"></i> Carrito de Venta
-                    </a>
-                </div>
-
-            </li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ventas:venta_form' %}">
+                            <i class="fas fa-shopping-cart"></i> Ventas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'productos:producto_create' %}">
+                            <i class="fas fa-plus-circle"></i> Nuevo Producto
+                        </a>
+                    </li>
+                    <li class="navbar navbar-expand-lg navbar-dark bg-dark">
+                        <a class="navbar-brand" href="{% url 'ventas:venta_list' %}">
+                            <i class="fas fa-cash-register"></i> Registro de venta
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 

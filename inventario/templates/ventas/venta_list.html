@@ -24,7 +24,7 @@
                 <td>{{ venta.fecha|date:"d/m/Y H:i" }}</td>
                 <td>${{ venta.total }}</td>
                 <td>
-                    <a href="{% url 'productos:producto_list' venta.id %}" class="btn btn-info btn-sm">Ver Detalles</a>
+                    <a href="{% url 'ventas:venta_form' %}" class="btn btn-info btn-sm">Editar Venta</a>
                 </td>
             </tr>
             {% empty %}

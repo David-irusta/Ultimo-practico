@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Q
@@ -84,5 +84,17 @@ class VentaCreateView(CreateView):
             from .forms import VentaDetalleFormSet
             context['formset'] = VentaDetalleFormSet()
         return context
+
+
+class VentaUpdateView(UpdateView):
+    model = Venta
+    form_class = VentaForm
+    template_name = "ventas/venta_form.html"
+    success_url = reverse_lazy("ventas:venta_list")
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Venta actualizada exitosamente")
+        return response
     
     
