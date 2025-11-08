@@ -2,22 +2,36 @@
 {% load bootstrap4 %}
 {% load crispy_forms_tags %}
 
-<h2>Ventas</h2>
-<table class="table table-bordered">
-    <tr>
-        <th>Código</th>
-        <th>Cliente</th>
-        <th>Fecha</th>
-        <th>Total</th>
-        <th>Detalle</th>
-    </tr>
-    {% for venta in ventas %}
-    <tr>
-        <td>{{ venta.codigo }}</td>
-        <td>{{ venta.cliente }}</td>
-        <td>{{ venta.fecha }}</td>
-        <td>${{ venta.total }}</td>
-        <td><a href="{% url 'ventas:venta_detail' venta.pk %}">Ver</a></td>
-    </tr>
-    {% endfor %}
-</table>
+{% block title %}Listado de Ventas{% endblock %}
+{% block header %}Listado de Ventas{% endblock %}
+
+{% block content %}
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in ventas %}
+            <tr>
+                <td>{{ venta.id }}</td>
+                <td>{{ venta.cliente.nombre }}</td>
+                <td>{{ venta.fecha|date:"d/m/Y H:i" }}</td>
+                <td>${{ venta.total }}</td>
+                <td>
+                    <a href="{% url 'productos:producto_list' venta.id %}" class="btn btn-info btn-sm">Ver Detalles</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No hay ventas registradas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+{% endblock content %}

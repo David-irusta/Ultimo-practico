@@ -1,18 +1,18 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Q
 from django.utils import timezone
-from .models import Venta
+from .models import Venta, ItemVenta
 from productos.models import Producto, MovimientoStock
 from .forms import VentaForm
 from django.shortcuts import redirect
 
 class VentaListView(ListView):
-    model = Producto
+    model = Venta
     template_name = "ventas/venta_list.html"
-    context_object_name = "productos"
+    context_object_name = "ventas"
     paginate_by = 5
 
     def get_queryset(self):
@@ -21,30 +21,15 @@ class VentaListView(ListView):
 
         if search_query:
             queryset = queryset.filter(
-                Q(nombre__icontains=search_query) |
+                Q(cliente__nombre__icontains=search_query) |
                 Q(codigo__icontains=search_query)
             )
 
-        return queryset.order_by("nombre")
+        return queryset.order_by("-fecha")
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["search_query"] = self.request.GET.get("search", "")
-        return context
-    
-    
-class VentaDetailView(DetailView):
-    model = Venta
-    template_name = "ventas/venta_detail.html"
-    context_object_name = "producto"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        movimientos = getattr(self.object, "movimientos", None)
-        if movimientos:
-            context["movimientos"] = movimientos.all()[:10]
-        else:
-            context["movimientos"] = []
         return context
         
 class VentaCreateView(CreateView):

@@ -6,7 +6,6 @@ app_name = 'ventas'
 
 urlpatterns = [
     path('Listar-venta/', views.VentaListView.as_view(), name='venta_list'),
-    path('Registrar-venta/<int:pk>/', views.VentaDetailView.as_view(), name='venta_detail'),
-    path('Registrar-venta/nuevo/', views.VentaCreateView.as_view(), name='venta_form'),
+    path('Registrar-venta1/nuevo/', views.VentaCreateView.as_view(), name='venta_form'),
 ]
 
