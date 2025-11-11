@@ -1,17 +1,33 @@
-{% extends 'clientes/base.html' %}
+{% extends 'productos/base.html' %}
 {% load bootstrap4 %}
 {% load crispy_forms_tags %}
 
-
 {% block content %}
-    <div class="form-group">
-        <h1>Detalle del cliente</h1>
-        <p><strong>Nombre: </strong>{{ cliente.nombre }}</p>
-        <p><strong>Correo Electrónico: </strong>{{ cliente.email }}</p>
-        <p><strong>Teléfono: </strong>{{ cliente.telefono }}</p>
-        <p><strong>Dirección: </strong>{{ cliente.direccion }}</p>
-        <div class="text-align mt-4">
-            <a href="{% url 'clientes:cliente_list' %}" class="btn btn-secondary">Volver al listado</a>
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Detalle de cliente</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item">
+                    <strong>Nombre y apellido:</strong> {{ cliente.nombre }} {{ cliente.apellido }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Correo electronico:</strong> {{ cliente.email }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Direccion:</strong> {{ cliente.direccion }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Dni:</strong> {{ cliente.numero_documento}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Telefono:</strong> {{ cliente.telefono }}
+                </li>
+            </ul>
+            <a href="{% url 'productos:producto_list' %}" class="btn btn-secondary btn-block">Volver al listado</a>
+        </div>
     </div>
+</div>
 {% endblock content %}
-    

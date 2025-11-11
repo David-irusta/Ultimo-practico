@@ -9,7 +9,14 @@ class ClienteListView(ListView):
     model = Cliente
     template_name = "clientes/cliente_list.html"
     context_object_name = "clientes"
-    paginated_by = 15
+    paginate_by = 10
+
+    def get(self, request, *args, **kwargs):
+        response = super().get(request, *args, **kwargs)
+        if not self.get_queryset().exists():
+            messages.info(request, "No hay clientes disponibles.")
+
+        return response
 
 class ClienteCreateView(CreateView):
     model = Cliente

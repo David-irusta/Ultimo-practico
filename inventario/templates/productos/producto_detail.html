@@ -3,15 +3,28 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1 class="mb-4 text-center">Detalle de la oficina</h1>
-        <p><strong>Nombre: </strong>{{ producto.nombre }}</p>
-        <p><strong>SKU: </strong>{{ producto.sku }}</p>
-        <p><strong>Precio: </strong>${{ producto.precio_unitario }}</p>
-        <p><strong>Stock Actual: </strong>{{ producto.stock }}</p>
-        <div class="text-align mt-4">
-            <a href="{% url 'productos:producto_list' %}" class="btn btn-secondary">Volver al listado</a>
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Detalle del producto</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item">
+                    <strong>Nombre:</strong> {{ producto.nombre }}
+                </li>
+                <li class="list-group-item">
+                    <strong>SKU:</strong> {{ producto.sku }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Precio:</strong> ${{ producto.precio_unitario }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Stock Actual:</strong> {{ producto.stock }}
+                </li>
+            </ul>
+            <a href="{% url 'productos:producto_list' %}" class="btn btn-secondary btn-block">Volver al listado</a>
         </div>
     </div>
-
+</div>
 {% endblock content %}
