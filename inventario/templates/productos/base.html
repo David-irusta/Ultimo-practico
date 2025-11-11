@@ -69,6 +69,29 @@
                     </li>
                 </ul>
             </div>
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="navbar-text me-2">
+                                👤 {{ user.username }}
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <form action="{% url 'logout' %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-light btn-sm">
+                                    Cerrar sesión
+                                </button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light btn-sm" href="{% url 'login' %}">
+                            Iniciar sesión
+                            </a>
+                        </li>
+                {% endif %}
+                </ul>
         </div>
     </nav>
 

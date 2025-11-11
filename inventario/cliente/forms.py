@@ -1,7 +1,11 @@
+from allauth.account.forms import SignupForm
+from captcha.fields import CaptchaField
+from django.utils.translation import gettext_lazy as _
 from django import forms
 from .models import Cliente
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
+
 
 class ClienteForm(forms.ModelForm):
     class Meta:

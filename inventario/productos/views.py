@@ -18,7 +18,7 @@ class ProductoListView(ListView):
     model = Producto
     template_name = "producto/producto_list.html"
     context_object_name = "productos"
-    paginated_by = 10
+    paginate_by = 10
 
     def get_queryset(self):
         """Sobrescribe para permitir el filtrado por stock bajo."""
