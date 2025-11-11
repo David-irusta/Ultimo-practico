@@ -7,14 +7,14 @@ from .models import Cliente
 
 class ClienteListView(ListView):
     model = Cliente
-    template_name = "cliente/cliente_list.html"
+    template_name = "clientes/cliente_list.html"
     context_object_name = "clientes"
     paginated_by = 15
 
 class ClienteCreateView(CreateView):
     model = Cliente
     form_class = ClienteForm
-    template_name = "cliente/cliente_form.html"
+    template_name = "clientes/cliente_form.html"
     success_url = reverse_lazy('clientes:cliente_list')
 
     def form_valid(self, form):
@@ -25,13 +25,13 @@ class ClienteCreateView(CreateView):
 
 class ClienteDetailView(DetailView):
     model = Cliente
-    template_name = "cliente/cliente_detail.html"
+    template_name = "clientes/cliente_detail.html"
     context_object_name = "cliente"
 
 class ClienteUpdateView(UpdateView):
     model = Cliente
     form_class = ClienteForm
-    template_name = "cliente/cliente_form.html"
+    template_name = "clientes/cliente_form.html"
     success_url = reverse_lazy("clientes:cliente_list")
 
     def form_valid(self, form):
@@ -41,7 +41,7 @@ class ClienteUpdateView(UpdateView):
 
 class ClienteDeleteView(DeleteView):
     model = Cliente
-    template_name = "cliente/cliente_confirm_delete.html"
+    template_name = "clientes/cliente_confirm_delete.html"
     success_url = reverse_lazy("cliente:lista_clientes")
 
     def delete(self, request, *args, **kwargs):

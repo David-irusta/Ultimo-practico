@@ -1,0 +1,13 @@
+{% extends 'clientes/base.html' %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Eliminar cliente</h1>
+    <p>Estas seguro de eliminar? {{ cliente.nombre }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'clientes:list_cliente' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock content %}

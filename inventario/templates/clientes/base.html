@@ -27,16 +27,28 @@
     </style>
 </head>
 <body>
-  <nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="{% url 'productos:producto_list' %}">
-            <i class="fas fa-users"></i> Sistema de Inventario
+            <i class="fas fa-boxes"></i> Sistema de Inventario
         </a>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'ventas:venta_list' %}">
-            <i class="fas fa-shopping-cart"></i> Ventas
-            </a>
-        </li>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ventas:venta_list' %}">
+                        <i class="fas fa-shopping-cart"></i> Ventas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'clientes:cliente_list' %}">
+                        <i class="fas fa-users"></i> Clientes
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
   </nav>  
 

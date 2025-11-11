@@ -2,12 +2,11 @@
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
 
-{% block title %}{% if form.instance.pk %}Editar{% else %}Crear{% endif %}{% endblock %}
-{% block header %}{% if form.instance.pk %}Editar{% else %}Crear Venta{% endif %}{% endblock %}
+{% block title %}{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Venta{% endblock %}
+{% block header %}{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Venta{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Crear Venta</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
@@ -25,7 +24,7 @@
                             {{ item_form.product.errors }}
                         </div>
                     {% endif %}
-
+                    
                     {# Renderizar el resto de campos del formset (excluyendo product si ya lo mostramos) #}
                     {% for field in item_form.visible_fields %}
                         {% if field.name != 'product' %}
