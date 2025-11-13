@@ -43,41 +43,25 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'productos:producto_create' %}">
-                            <i class="fas fa-plus-circle"></i> Nuevo Producto
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'productos:stock_bajo_list' %}">
-                            <i class="fas fa-exclamation-triangle"></i> Stock Bajo
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'ventas:venta_list' %}">
                             <i class="fas fa-shopping-cart"></i> Ventas
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'ventas:venta_create' %}" class="nav-link">
-                            <i class="fas fa-cash-register"></i> Registrar Venta
-                        </a>
-                    </li>
-                    <li>
                         <a class="nav-link" href="{% url 'clientes:cliente_list' %}">
                             <i class="fas fa-users"></i> Clientes
                         </a>
                     </li>
                 </ul>
-            </div>
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ml-auto">
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <span class="navbar-text me-2">
+                            <span class="navbar-text mr-2">
                                 👤 {{ user.username }}
                             </span>
                         </li>
                         <li class="nav-item">
-                            <form action="{% url 'logout' %}" method="post" class="d-inline">
+                            <form action="{% url 'account_logout' %}" method="post" class="d-inline">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-outline-light btn-sm">
                                     Cerrar sesión
@@ -86,12 +70,13 @@
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="btn btn-outline-light btn-sm" href="{% url 'login' %}">
-                            Iniciar sesión
+                            <a class="btn btn-outline-light btn-sm" href="{% url 'account_login' %}">
+                                Iniciar sesión
                             </a>
                         </li>
-                {% endif %}
+                    {% endif %}
                 </ul>
+            </div>
         </div>
     </nav>
 

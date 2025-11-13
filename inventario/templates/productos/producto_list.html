@@ -66,17 +66,8 @@
                         <a href="{% url 'productos:producto_form' producto.pk %}" class="btn btn-primary" title="Editar">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="{% url 'productos:producto_movimiento_form' producto.pk %}" class="btn btn-success" title="Movimiento">
-                            <i class="fas fa-exchange-alt"></i>
-                        </a>
                         <a href="{% url 'productos:producto_confirm_delete' producto.pk %}" class="btn btn-danger" title ="Eliminar">
                             <i class="fas fa-trash-alt"></i>
-                        </a>
-                        <a href="{% url 'productos:ajuste_stock_form' producto.pk %}" class="btn btn-secondary" title="Editar stock">
-                            <i class="fas fa-warehouse"></i>
-                        </a>
-                        <a href="{% url 'ventas:venta_create' %}" class="btn btn-warning" title="Nueva venta">
-                            <i class="fas fa-cart-plus"></i>
                         </a>
                     </div>
                 </td>
@@ -89,6 +80,6 @@
 <div class="alert alert-info">
     <i class="fas fa-info-circle"></i> No hay productos registrados.
 </div>
-{% include 'producto/paginator.html' %}
 {% endif %}
-{% endblock %}
+{% include 'paginator.html' %}
+{% endblock content %}

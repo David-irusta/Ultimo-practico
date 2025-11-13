@@ -1,0 +1,13 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Iniciar sesion</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit">Confirmar</button>
+        <p>No tienes una cuenta <a href="{% url 'account_signup' %}">Registrarse</a></p>
+    </form>
+{% endblock content %}
+    

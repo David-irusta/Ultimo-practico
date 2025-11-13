@@ -1,0 +1,9 @@
+from allauth.account.forms import SignupForm
+from captcha.fields import CaptchaField
+from django.utils.translation import gettext_lazy as _
+
+class CustomSignupForm(SignupForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CustomSignupForm, self).__init__(*args, **kwargs)
+        self.fields['captcha'] = CaptchaField(label=_("Verificacion"))

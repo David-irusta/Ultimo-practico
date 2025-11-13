@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'core',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -138,12 +138,17 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 SITE_ID = 1
 
-LOGIN_URL = 'productos:producto_list'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_REDIRECT_URL = 'productos:producto_list'
+LOGOUT_REDIRECT_URL = 'productos:producto_list'
+
+ACCOUNT_FORMS = {
+    'signup': 'accounts.forms.CustomSignupForm',
+}
 
 BOOTSTRAP4 = {
     'include_jquery' : True,
