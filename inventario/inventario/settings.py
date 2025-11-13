@@ -143,8 +143,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 SITE_ID = 1
 
+LOGIN_URL = 'account_login'
 LOGIN_REDIRECT_URL = 'productos:producto_list'
-LOGOUT_REDIRECT_URL = 'productos:producto_list'
+LOGOUT_REDIRECT_URL = 'account_login'
 
 ACCOUNT_FORMS = {
     'signup': 'accounts.forms.CustomSignupForm',

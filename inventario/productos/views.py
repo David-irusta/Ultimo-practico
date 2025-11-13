@@ -5,6 +5,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, FormView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from django.db.models import Q, F
@@ -47,11 +48,18 @@ class ProductoListView(ListView):
         return response
     
 
-class ProductoDetailView(DetailView):
+class ProductoDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     """Muestra los detalles de un producto específico."""
     model = Producto
     template_name = "productos/producto_detail.html"
     context_object_name = "producto"
+    permission_required = "productos.detail_producto"
+
+    def has_permission(self):
+        user = self.request.user
+        if user.is_superuser or user.is_staff or user.groups.filter(name='Administradores').exists():
+            return True
+        return (super().has_permission() and self.request.user.groups.filter(name='Stock').exists())
 
     def get_context_data(self, **kwargs):
         """Añade los últimos 10 movimientos y el formulario de ajuste al contexto."""
@@ -62,12 +70,20 @@ class ProductoDetailView(DetailView):
         return context
     
 
-class ProductoCreateView(CreateView):
+class ProductoCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     """Vista para crear un nuevo producto."""
     model = Producto
     form_class = ProductoForm
     template_name = "productos/producto_form.html"
     success_url = reverse_lazy("productos:producto_list")
+
+    permission_required = "productos.add_producto"
+
+    def has_permission(self):
+        user = self.request.user
+        if user.is_superuser or user.is_staff or user.groups.filter(name='Administradores').exists():
+            return True
+        return (super().has_permission() and self.request.user.groups.filter(name='Stock').exists())
 
     def form_valid(self, form):
         """Sobrescribe para registrar un movimiento de stock inicial."""
@@ -87,12 +103,17 @@ class ProductoCreateView(CreateView):
         return response
     
 
-class ProductoUpdateView(UpdateView):
+class ProductoUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     """Vista para actualizar un producto existente."""
     model = Producto
     template_name = "productos/producto_form.html"
     form_class = ProductoForm
     success_url = reverse_lazy("productos:producto_list")
+
+    permission_required = "productos.change_producto"
+
+    def has_permission(self):
+        return (super().has_permission() and self.request.user.groups.filter(name='Stock').exists())
 
     def form_valid(self, form):
         """Sobrescribe para mostrar un mensaje de éxito."""
@@ -101,11 +122,19 @@ class ProductoUpdateView(UpdateView):
         return response
     
 
-class ProductoDeleteView(DeleteView):
+class ProductoDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     """Vista para eliminar un producto."""
     model = Producto
     template_name = "productos/producto_confirm_delete.html"
     success_url = reverse_lazy("productos:producto_list")
+
+    permission_required = "productos.delete_producto"
+
+    def has_permission(self):
+        user = self.request.user
+        if user.is_superuser or user.is_staff or user.groups.filter(name='Administradores').exists():
+            return True
+        return (super().has_permission() and self.request.user.groups.filter(name='Stock').exists())
 
     def delete(self, request, *args, **kwargs):
         """Sobrescribe para mostrar un mensaje de éxito después de eliminar."""
@@ -118,7 +147,15 @@ class MovimientoStockCreateView(CreateView):
     model = MovimientoStock
     template_name = "productos/producto_movimiento_form.html"
     form_class = MovimientoStockForm
+    permission_required = "productos.add_movimientostock"
 
+    def has_permission(self):
+        user = self.request.user
+        if user.is_superuser or user.is_staff or user.groups.filter(name='Administradores').exists():
+            return True
+        return (super().has_permission() and self.request.user.groups.filter(name='Stock').exists())
+
+    
     def get_form_kwargs(self):
         """Pasa la instancia del producto al formulario."""
         kwargs = super().get_form_kwargs()
@@ -158,6 +195,13 @@ class AjusteStockView(FormView):
     """Vista para ajustar el stock de un producto a un valor específico."""
     form_class = AjusteStockForm
     template_name = "productos/ajuste_stock_form.html"
+    permission_required = "productos.change_producto"
+
+    def has_permission(self):
+        user = self.request.user
+        if user.is_superuser or user.is_staff or user.groups.filter(name='Administradores').exists():
+            return True
+        return (super().has_permission() and self.request.user.groups.filter(name='Stock').exists())
 
     class Meta:
         model = Producto
@@ -212,6 +256,13 @@ class StockBajoListView(ListView):
     model = Producto
     template_name = "productos/stock_bajo_list.html"
     context_object_name = "productos"
+    permission_required = "productos.view_producto"
+        
+    def has_permission(self):
+        user = self.request.user
+        if user.is_superuser or user.is_staff or user.groups.filter(name='Administradores').exists():
+            return True
+        return (super().has_permission() and self.request.user.groups.filter(name='Stock').exists())
 
     def get_queryset(self):
         """
