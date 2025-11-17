@@ -1,0 +1,2036 @@
+[
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Producto",
+    "content_type": [
+      "productos",
+      "producto"
+    ],
+    "codename": "add_producto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Producto",
+    "content_type": [
+      "productos",
+      "producto"
+    ],
+    "codename": "change_producto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Producto",
+    "content_type": [
+      "productos",
+      "producto"
+    ],
+    "codename": "delete_producto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Producto",
+    "content_type": [
+      "productos",
+      "producto"
+    ],
+    "codename": "view_producto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Movimiento de Stock",
+    "content_type": [
+      "productos",
+      "movimientostock"
+    ],
+    "codename": "add_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Movimiento de Stock",
+    "content_type": [
+      "productos",
+      "movimientostock"
+    ],
+    "codename": "change_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Movimiento de Stock",
+    "content_type": [
+      "productos",
+      "movimientostock"
+    ],
+    "codename": "delete_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Movimiento de Stock",
+    "content_type": [
+      "productos",
+      "movimientostock"
+    ],
+    "codename": "view_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add cliente",
+    "content_type": [
+      "cliente",
+      "cliente"
+    ],
+    "codename": "add_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change cliente",
+    "content_type": [
+      "cliente",
+      "cliente"
+    ],
+    "codename": "change_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete cliente",
+    "content_type": [
+      "cliente",
+      "cliente"
+    ],
+    "codename": "delete_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view cliente",
+    "content_type": [
+      "cliente",
+      "cliente"
+    ],
+    "codename": "view_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add venta",
+    "content_type": [
+      "ventas",
+      "venta"
+    ],
+    "codename": "add_venta"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change venta",
+    "content_type": [
+      "ventas",
+      "venta"
+    ],
+    "codename": "change_venta"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete venta",
+    "content_type": [
+      "ventas",
+      "venta"
+    ],
+    "codename": "delete_venta"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view venta",
+    "content_type": [
+      "ventas",
+      "venta"
+    ],
+    "codename": "view_venta"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add item venta",
+    "content_type": [
+      "ventas",
+      "itemventa"
+    ],
+    "codename": "add_itemventa"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change item venta",
+    "content_type": [
+      "ventas",
+      "itemventa"
+    ],
+    "codename": "change_itemventa"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete item venta",
+    "content_type": [
+      "ventas",
+      "itemventa"
+    ],
+    "codename": "delete_itemventa"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view item venta",
+    "content_type": [
+      "ventas",
+      "itemventa"
+    ],
+    "codename": "view_itemventa"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Movimiento de stock",
+    "content_type": [
+      "ventas",
+      "movimientostock"
+    ],
+    "codename": "add_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Movimiento de stock",
+    "content_type": [
+      "ventas",
+      "movimientostock"
+    ],
+    "codename": "change_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Movimiento de stock",
+    "content_type": [
+      "ventas",
+      "movimientostock"
+    ],
+    "codename": "delete_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Movimiento de stock",
+    "content_type": [
+      "ventas",
+      "movimientostock"
+    ],
+    "codename": "view_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add captcha store",
+    "content_type": [
+      "captcha",
+      "captchastore"
+    ],
+    "codename": "add_captchastore"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change captcha store",
+    "content_type": [
+      "captcha",
+      "captchastore"
+    ],
+    "codename": "change_captchastore"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete captcha store",
+    "content_type": [
+      "captcha",
+      "captchastore"
+    ],
+    "codename": "delete_captchastore"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view captcha store",
+    "content_type": [
+      "captcha",
+      "captchastore"
+    ],
+    "codename": "view_captchastore"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "add_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "change_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "delete_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "view_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add email address",
+    "content_type": [
+      "account",
+      "emailaddress"
+    ],
+    "codename": "add_emailaddress"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change email address",
+    "content_type": [
+      "account",
+      "emailaddress"
+    ],
+    "codename": "change_emailaddress"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete email address",
+    "content_type": [
+      "account",
+      "emailaddress"
+    ],
+    "codename": "delete_emailaddress"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view email address",
+    "content_type": [
+      "account",
+      "emailaddress"
+    ],
+    "codename": "view_emailaddress"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add email confirmation",
+    "content_type": [
+      "account",
+      "emailconfirmation"
+    ],
+    "codename": "add_emailconfirmation"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change email confirmation",
+    "content_type": [
+      "account",
+      "emailconfirmation"
+    ],
+    "codename": "change_emailconfirmation"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete email confirmation",
+    "content_type": [
+      "account",
+      "emailconfirmation"
+    ],
+    "codename": "delete_emailconfirmation"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view email confirmation",
+    "content_type": [
+      "account",
+      "emailconfirmation"
+    ],
+    "codename": "view_emailconfirmation"
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "Administradores",
+    "permissions": [
+      [
+        "add_emailaddress",
+        "account",
+        "emailaddress"
+      ],
+      [
+        "change_emailaddress",
+        "account",
+        "emailaddress"
+      ],
+      [
+        "delete_emailaddress",
+        "account",
+        "emailaddress"
+      ],
+      [
+        "view_emailaddress",
+        "account",
+        "emailaddress"
+      ],
+      [
+        "add_emailconfirmation",
+        "account",
+        "emailconfirmation"
+      ],
+      [
+        "change_emailconfirmation",
+        "account",
+        "emailconfirmation"
+      ],
+      [
+        "delete_emailconfirmation",
+        "account",
+        "emailconfirmation"
+      ],
+      [
+        "view_emailconfirmation",
+        "account",
+        "emailconfirmation"
+      ],
+      [
+        "add_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "change_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "delete_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "view_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "add_group",
+        "auth",
+        "group"
+      ],
+      [
+        "change_group",
+        "auth",
+        "group"
+      ],
+      [
+        "delete_group",
+        "auth",
+        "group"
+      ],
+      [
+        "view_group",
+        "auth",
+        "group"
+      ],
+      [
+        "add_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "change_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "delete_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "view_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "add_user",
+        "auth",
+        "user"
+      ],
+      [
+        "change_user",
+        "auth",
+        "user"
+      ],
+      [
+        "delete_user",
+        "auth",
+        "user"
+      ],
+      [
+        "view_user",
+        "auth",
+        "user"
+      ],
+      [
+        "add_captchastore",
+        "captcha",
+        "captchastore"
+      ],
+      [
+        "change_captchastore",
+        "captcha",
+        "captchastore"
+      ],
+      [
+        "delete_captchastore",
+        "captcha",
+        "captchastore"
+      ],
+      [
+        "view_captchastore",
+        "captcha",
+        "captchastore"
+      ],
+      [
+        "add_cliente",
+        "cliente",
+        "cliente"
+      ],
+      [
+        "change_cliente",
+        "cliente",
+        "cliente"
+      ],
+      [
+        "delete_cliente",
+        "cliente",
+        "cliente"
+      ],
+      [
+        "view_cliente",
+        "cliente",
+        "cliente"
+      ],
+      [
+        "add_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "change_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "delete_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "view_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "add_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "change_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "delete_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "view_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "add_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "change_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "delete_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "view_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "add_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "change_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "delete_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "view_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "add_site",
+        "sites",
+        "site"
+      ],
+      [
+        "change_site",
+        "sites",
+        "site"
+      ],
+      [
+        "delete_site",
+        "sites",
+        "site"
+      ],
+      [
+        "view_site",
+        "sites",
+        "site"
+      ],
+      [
+        "add_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "change_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "delete_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "view_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "add_movimientostock",
+        "ventas",
+        "movimientostock"
+      ],
+      [
+        "change_movimientostock",
+        "ventas",
+        "movimientostock"
+      ],
+      [
+        "delete_movimientostock",
+        "ventas",
+        "movimientostock"
+      ],
+      [
+        "view_movimientostock",
+        "ventas",
+        "movimientostock"
+      ],
+      [
+        "add_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "change_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "delete_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "view_venta",
+        "ventas",
+        "venta"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "Stock",
+    "permissions": [
+      [
+        "add_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "change_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "delete_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "view_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "add_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "change_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "delete_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "view_producto",
+        "productos",
+        "producto"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "Ventas",
+    "permissions": [
+      [
+        "add_cliente",
+        "cliente",
+        "cliente"
+      ],
+      [
+        "change_cliente",
+        "cliente",
+        "cliente"
+      ],
+      [
+        "delete_cliente",
+        "cliente",
+        "cliente"
+      ],
+      [
+        "view_cliente",
+        "cliente",
+        "cliente"
+      ],
+      [
+        "add_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "change_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "delete_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "view_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "add_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "change_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "delete_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "view_venta",
+        "ventas",
+        "venta"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$p99U2Kc38LXU2hxWDGuXnd$vBTy+/kOz6fK9KyK/kp4b29k8FJSZyDiXnHNgv0rXJA=",
+    "last_login": "2025-10-25T17:22:08Z",
+    "is_superuser": true,
+    "username": "David",
+    "first_name": "",
+    "last_name": "",
+    "email": "david.irusta@itscordoba.edu.ar",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-10-25T17:21:44Z",
+    "groups": [
+      [
+        "Administradores"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$dDHQjTtV1DciSEsODhwsxD$lSOUXxIcs+VamHLZ4GYpFfEVrOgsmsqokqAbpsUiq7w=",
+    "last_login": "2025-11-16T17:10:31.600Z",
+    "is_superuser": true,
+    "username": "Nahuel",
+    "first_name": "",
+    "last_name": "",
+    "email": "david.irusta@itscordoba.edu.ar",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-11-01T15:15:31Z",
+    "groups": [
+      [
+        "Administradores"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$Y8ZdMcpFreZfwUKYwJnHFw$EAtl+xAwk0R1nua5Z8bnv1SQExRzqGi33vxvBqohMA8=",
+    "last_login": "2025-11-13T22:46:14.355Z",
+    "is_superuser": false,
+    "username": "stocker",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-13T22:16:46Z",
+    "groups": [
+      [
+        "Stock"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$UEoy6XKEslYLSLuHblmEo3$UBzPqDpFkONn8NqoBS69yntbqE8JDQMvKptLpSIArHs=",
+    "last_login": "2025-11-13T23:15:37.918Z",
+    "is_superuser": false,
+    "username": "vendedor",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-13T23:09:18Z",
+    "groups": [
+      [
+        "Ventas"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$HKNYIDffDnxtRXFOtwSOxe$bRJYLx5dU7VGAzpS87vQKU6fSRNszmHfDFb9WBaaGqs=",
+    "last_login": "2025-11-13T23:32:04.384Z",
+    "is_superuser": false,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-13T23:31:33Z",
+    "groups": [
+      [
+        "Administradores"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 6,
+  "fields": {
+    "nombre": "Tijera",
+    "descripcion": "Para cortar objetos",
+    "precio_unitario": "6000.00",
+    "sku": "TJR-12",
+    "stock": 195,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-10-25T18:18:59.557Z",
+    "fecha_actualizacion": "2025-11-16T18:51:16.312Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 7,
+  "fields": {
+    "nombre": "Bicicleta",
+    "descripcion": "Para pasear por la ciudad",
+    "precio_unitario": "200000.00",
+    "sku": "BCT-156KZ",
+    "stock": 22,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-10-25T19:09:24.049Z",
+    "fecha_actualizacion": "2025-11-08T17:05:53.883Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 8,
+  "fields": {
+    "nombre": "Balon de futbol",
+    "descripcion": "Balon oficial de futbol talla 5",
+    "precio_unitario": "8000.00",
+    "sku": "SKU12345",
+    "stock": 100,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.887Z",
+    "fecha_actualizacion": "2025-11-11T18:30:12.887Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 9,
+  "fields": {
+    "nombre": "Camiseta deportiva",
+    "descripcion": "Camiseta transpirable para deportes",
+    "precio_unitario": "15500.00",
+    "sku": "SKU12346",
+    "stock": 200,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.887Z",
+    "fecha_actualizacion": "2025-11-11T18:30:12.887Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 10,
+  "fields": {
+    "nombre": "Zapatillas running",
+    "descripcion": "Zapatillas para correr de alta performance",
+    "precio_unitario": "23000.00",
+    "sku": "SKU12347",
+    "stock": 148,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.887Z",
+    "fecha_actualizacion": "2025-11-16T18:51:16.107Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 11,
+  "fields": {
+    "nombre": "Gorra de beisbol",
+    "descripcion": "Gorra ajustable con logo bordado",
+    "precio_unitario": "6000.00",
+    "sku": "SKU12348",
+    "stock": 300,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.887Z",
+    "fecha_actualizacion": "2025-11-11T18:30:12.887Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 12,
+  "fields": {
+    "nombre": "Mochila deportiva",
+    "descripcion": "Mochila resistente al agua para actividades al aire libre",
+    "precio_unitario": "12000.00",
+    "sku": "SKU12349",
+    "stock": 80,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.888Z",
+    "fecha_actualizacion": "2025-11-11T18:30:12.888Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 13,
+  "fields": {
+    "nombre": "Guantes de entrenamiento",
+    "descripcion": "Guantes acolchonados para entrenamiento de fuerza",
+    "precio_unitario": "7000.00",
+    "sku": "SKU12350",
+    "stock": 120,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.888Z",
+    "fecha_actualizacion": "2025-11-11T18:30:12.888Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 14,
+  "fields": {
+    "nombre": "Pelota de baloncesto",
+    "descripcion": "Pelota oficial de baloncesto",
+    "precio_unitario": "9000.00",
+    "sku": "SKU12351",
+    "stock": 90,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.888Z",
+    "fecha_actualizacion": "2025-11-11T18:30:12.888Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 15,
+  "fields": {
+    "nombre": "Bicicleta estatica",
+    "descripcion": "Bicicleta estatica con monitor de ritmo cardiaco",
+    "precio_unitario": "35000.00",
+    "sku": "SKU12353",
+    "stock": 59,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.888Z",
+    "fecha_actualizacion": "2025-11-16T18:41:23.235Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 16,
+  "fields": {
+    "nombre": "Esterilla de yoga",
+    "descripcion": "Esterilla antideslizante para yoga y pilates",
+    "precio_unitario": "5000.00",
+    "sku": "SKU12354",
+    "stock": 250,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.888Z",
+    "fecha_actualizacion": "2025-11-11T18:30:12.888Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 17,
+  "fields": {
+    "nombre": "Set de pesas",
+    "descripcion": "Set de pesas ajustables para entrenamiento en casa",
+    "precio_unitario": "28000.00",
+    "sku": "SKU12355",
+    "stock": 40,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.888Z",
+    "fecha_actualizacion": "2025-11-11T18:30:12.888Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 18,
+  "fields": {
+    "nombre": "Balon de voleibol",
+    "descripcion": "Balon oficial de voleibol",
+    "precio_unitario": "7500.00",
+    "sku": "SKU12356",
+    "stock": 110,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.888Z",
+    "fecha_actualizacion": "2025-11-11T18:30:12.888Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 19,
+  "fields": {
+    "nombre": "Camiseta de futbol",
+    "descripcion": "Camiseta oficial de futbol de equipos populares",
+    "precio_unitario": "18000.00",
+    "sku": "SKU12357",
+    "stock": 220,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.888Z",
+    "fecha_actualizacion": "2025-11-11T18:30:12.888Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 20,
+  "fields": {
+    "nombre": "Zapatillas de baloncesto",
+    "descripcion": "Zapatillas con buen soporte para baloncesto",
+    "precio_unitario": "25000.00",
+    "sku": "SKU12358",
+    "stock": 130,
+    "stock_minimo": 5,
+    "imagen": "",
+    "fecha_creacion": "2025-11-11T18:30:12.888Z",
+    "fecha_actualizacion": "2025-11-11T18:30:12.888Z"
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 6,
+  "fields": {
+    "producto": 6,
+    "tipo": "entrada",
+    "cantidad": 200,
+    "motivo": "Stock inicial",
+    "fecha": "2025-10-25T18:18:59.574Z",
+    "usuario": "David"
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 7,
+  "fields": {
+    "producto": 7,
+    "tipo": "entrada",
+    "cantidad": 4,
+    "motivo": "Stock inicial",
+    "fecha": "2025-10-25T19:09:24.067Z",
+    "usuario": "David"
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 8,
+  "fields": {
+    "producto": 7,
+    "tipo": "entrada",
+    "cantidad": 20,
+    "motivo": "Stock bajo en temporada de bicicletas",
+    "fecha": "2025-10-25T19:12:18.530Z",
+    "usuario": "David"
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 9,
+  "fields": {
+    "producto": 7,
+    "tipo": "salida",
+    "cantidad": 2,
+    "motivo": "Compra de producto",
+    "fecha": "2025-10-31T14:27:49.730Z",
+    "usuario": "David"
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 10,
+  "fields": {
+    "producto": 7,
+    "tipo": "VENTA",
+    "cantidad": -1,
+    "motivo": null,
+    "fecha": "2025-11-07T21:49:19.527Z",
+    "usuario": ""
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 11,
+  "fields": {
+    "producto": 7,
+    "tipo": "VENTA",
+    "cantidad": -1,
+    "motivo": null,
+    "fecha": "2025-11-08T17:05:53.898Z",
+    "usuario": ""
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 12,
+  "fields": {
+    "producto": 6,
+    "tipo": "VENTA",
+    "cantidad": -1,
+    "motivo": null,
+    "fecha": "2025-11-08T17:25:32.505Z",
+    "usuario": ""
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 13,
+  "fields": {
+    "producto": 6,
+    "tipo": "VENTA",
+    "cantidad": -1,
+    "motivo": null,
+    "fecha": "2025-11-08T17:47:51.596Z",
+    "usuario": ""
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 14,
+  "fields": {
+    "producto": 10,
+    "tipo": "VENTA",
+    "cantidad": -1,
+    "motivo": null,
+    "fecha": "2025-11-16T18:41:23.202Z",
+    "usuario": ""
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 15,
+  "fields": {
+    "producto": 15,
+    "tipo": "VENTA",
+    "cantidad": -1,
+    "motivo": null,
+    "fecha": "2025-11-16T18:41:23.251Z",
+    "usuario": ""
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 16,
+  "fields": {
+    "producto": 10,
+    "tipo": "VENTA",
+    "cantidad": -1,
+    "motivo": null,
+    "fecha": "2025-11-16T18:51:16.168Z",
+    "usuario": ""
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 17,
+  "fields": {
+    "producto": 6,
+    "tipo": "VENTA",
+    "cantidad": -3,
+    "motivo": null,
+    "fecha": "2025-11-16T18:51:16.374Z",
+    "usuario": ""
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 1,
+  "fields": {
+    "nombre": "Maria",
+    "apellido": "Lopez",
+    "numero_documento": "37525098",
+    "email": "maria.lopez@example.com",
+    "telefono": "555-1234",
+    "direccion": "Pueyrredon 1478"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 2,
+  "fields": {
+    "nombre": "Juan",
+    "apellido": "Perez",
+    "numero_documento": "42789654",
+    "email": "juan.perez@example.org",
+    "telefono": "555-5678",
+    "direccion": "Av. Siempre Viva 742"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 3,
+  "fields": {
+    "nombre": "Ana",
+    "apellido": "Garcia",
+    "numero_documento": "42569844",
+    "email": "ana.garcia@test.net",
+    "telefono": "555-8765",
+    "direccion": "Calle Falsa 123"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 4,
+  "fields": {
+    "nombre": "Pedro",
+    "apellido": "Martinez",
+    "numero_documento": "22658741",
+    "email": "pedro.martinez@sample.co",
+    "telefono": "555-4321",
+    "direccion": "Blvd. Central 45"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 5,
+  "fields": {
+    "nombre": "Laura",
+    "apellido": "Rodriguez",
+    "numero_documento": "32569885",
+    "email": "laura.rodriguez@domain.com",
+    "telefono": "555-6789",
+    "direccion": "Av. Libertad 789"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 6,
+  "fields": {
+    "nombre": "Carlos",
+    "apellido": "Sanchez",
+    "numero_documento": "20569456",
+    "email": "carlos.sanchez@email.com",
+    "telefono": "555-9876",
+    "direccion": "Calle Nueva 321"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 7,
+  "fields": {
+    "nombre": "Sofia",
+    "apellido": "Fernandez",
+    "numero_documento": "33845956",
+    "email": "sofia.fernandez@provider.org",
+    "telefono": "555-3456",
+    "direccion": "Plaza Mayor 654"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 8,
+  "fields": {
+    "nombre": "Diego",
+    "apellido": "Gomez",
+    "numero_documento": "32156387",
+    "email": "diego.gomez@mail.net",
+    "telefono": "555-6543",
+    "direccion": "Ruta 66 987"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 9,
+  "fields": {
+    "nombre": "Valeria",
+    "apellido": "Diaz",
+    "numero_documento": "41256325",
+    "email": "valeria.diaz@example.com",
+    "telefono": "555-7890",
+    "direccion": "Camino Real 159"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 10,
+  "fields": {
+    "nombre": "Andres",
+    "apellido": "Ruiz",
+    "numero_documento": "25632854",
+    "email": "andres.ruiz@sample.net",
+    "telefono": "555-2109",
+    "direccion": "Av. del Sol 753"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 11,
+  "fields": {
+    "nombre": "Paula",
+    "apellido": "Hernandez",
+    "numero_documento": "44289654",
+    "email": "paula.hernandez@domain.com",
+    "telefono": "555-1098",
+    "direccion": "Calle Luna 852"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 12,
+  "fields": {
+    "nombre": "Javier",
+    "apellido": "Moreno",
+    "numero_documento": "21200365",
+    "email": "javier.moreno@email.org",
+    "telefono": "555-8901",
+    "direccion": "Av. Estrella 951"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 13,
+  "fields": {
+    "nombre": "Camila",
+    "apellido": "Torres",
+    "numero_documento": "39562254",
+    "email": "camila.torres@provider.com",
+    "telefono": "555-4320",
+    "direccion": "Calle Mar 357"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 14,
+  "fields": {
+    "nombre": "Ricardo",
+    "apellido": "Blanco",
+    "numero_documento": "22846986",
+    "email": "ricardo.blanco@mail.net",
+    "telefono": "555-3210",
+    "direccion": "Camino Verde 258"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 15,
+  "fields": {
+    "nombre": "Daniel",
+    "apellido": "Salazar",
+    "numero_documento": "36984521",
+    "email": "daniel.salazar@example.org",
+    "telefono": "555-6780",
+    "direccion": "Av. Primavera 147"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 16,
+  "fields": {
+    "nombre": "Luciana",
+    "apellido": "Castro",
+    "numero_documento": "21846985",
+    "email": "luciana.castro@test.com",
+    "telefono": "555-7891",
+    "direccion": "Calle Oto±o 369"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 17,
+  "fields": {
+    "nombre": "Fernando",
+    "apellido": "Vargas",
+    "numero_documento": "19584652",
+    "email": "fernando.vargas@sample.net",
+    "telefono": "555-8902",
+    "direccion": "Plaza Central 741"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 18,
+  "fields": {
+    "nombre": "Florencia",
+    "apellido": "Rojas",
+    "numero_documento": "22361754",
+    "email": "florencia.rojas@domain.org",
+    "telefono": "555-9012",
+    "direccion": "Av. Invierno 852"
+  }
+},
+{
+  "model": "cliente.cliente",
+  "pk": 19,
+  "fields": {
+    "nombre": "Manuel",
+    "apellido": "Ramos",
+    "numero_documento": "22481363",
+    "email": "manuel.ramos@email.com",
+    "telefono": "555-0123",
+    "direccion": "Calle Sol 963"
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 1,
+  "fields": {
+    "codigo": 656256225662,
+    "cliente": 4,
+    "fecha": "2025-11-07T17:13:42.269Z",
+    "total": 0
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 2,
+  "fields": {
+    "codigo": 45821698,
+    "cliente": 1,
+    "fecha": "2025-11-07T17:19:28.504Z",
+    "total": 0
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 3,
+  "fields": {
+    "codigo": 45821698,
+    "cliente": 1,
+    "fecha": "2025-11-07T21:41:17.758Z",
+    "total": 0
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 4,
+  "fields": {
+    "codigo": 45821698,
+    "cliente": 1,
+    "fecha": "2025-11-07T21:42:55.555Z",
+    "total": 0
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 5,
+  "fields": {
+    "codigo": 45821698,
+    "cliente": 1,
+    "fecha": "2025-11-07T21:49:19.488Z",
+    "total": 15
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 6,
+  "fields": {
+    "codigo": 565456454654,
+    "cliente": 5,
+    "fecha": "2025-11-08T17:05:53.821Z",
+    "total": 15
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 7,
+  "fields": {
+    "codigo": 456581665466,
+    "cliente": 7,
+    "fecha": "2025-11-08T17:25:32.451Z",
+    "total": 15
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 8,
+  "fields": {
+    "codigo": 4581462654,
+    "cliente": 9,
+    "fecha": "2025-11-08T17:47:51.381Z",
+    "total": 15
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 9,
+  "fields": {
+    "codigo": 62565465323,
+    "cliente": 4,
+    "fecha": "2025-11-16T18:41:23.142Z",
+    "total": 30000
+  }
+},
+{
+  "model": "ventas.itemventa",
+  "pk": 1,
+  "fields": {
+    "venta": 4,
+    "producto": 7,
+    "cantidad": 1,
+    "precio_unitario": "15000.00",
+    "sub_total": "0.00"
+  }
+},
+{
+  "model": "ventas.itemventa",
+  "pk": 2,
+  "fields": {
+    "venta": 5,
+    "producto": 7,
+    "cantidad": 1,
+    "precio_unitario": "15.00",
+    "sub_total": "0.00"
+  }
+},
+{
+  "model": "ventas.itemventa",
+  "pk": 3,
+  "fields": {
+    "venta": 6,
+    "producto": 7,
+    "cantidad": 1,
+    "precio_unitario": "15.00",
+    "sub_total": "0.00"
+  }
+},
+{
+  "model": "ventas.itemventa",
+  "pk": 4,
+  "fields": {
+    "venta": 7,
+    "producto": 6,
+    "cantidad": 1,
+    "precio_unitario": "15.00",
+    "sub_total": "0.00"
+  }
+},
+{
+  "model": "ventas.itemventa",
+  "pk": 5,
+  "fields": {
+    "venta": 8,
+    "producto": 6,
+    "cantidad": 1,
+    "precio_unitario": "15.00",
+    "sub_total": "0.00"
+  }
+},
+{
+  "model": "ventas.itemventa",
+  "pk": 6,
+  "fields": {
+    "venta": 9,
+    "producto": 10,
+    "cantidad": 1,
+    "precio_unitario": "10.00",
+    "sub_total": "0.00"
+  }
+},
+{
+  "model": "ventas.itemventa",
+  "pk": 7,
+  "fields": {
+    "venta": 9,
+    "producto": 15,
+    "cantidad": 1,
+    "precio_unitario": "200.00",
+    "sub_total": "0.00"
+  }
+},
+{
+  "model": "captcha.captchastore",
+  "pk": 1,
+  "fields": {
+    "challenge": "GADN",
+    "response": "gadn",
+    "hashkey": "b5189a549097e0dd4ce462fe5b8b9511366d24f7",
+    "expiration": "2025-11-13T18:52:18.793Z"
+  }
+},
+{
+  "model": "sites.site",
+  "fields": {
+    "domain": "example.com",
+    "name": "example.com"
+  }
+}
+]

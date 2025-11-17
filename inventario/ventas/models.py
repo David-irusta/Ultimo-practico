@@ -6,10 +6,10 @@ from cliente.models import Cliente
 from productos.models import Producto
 
 class Venta(models.Model):
-    codigo = models.IntegerField("Codigo de venta")
+    codigo = models.BigIntegerField("Codigo de venta")
     cliente = models.ForeignKey("cliente.Cliente", on_delete=models.CASCADE)
     fecha = models.DateTimeField("Fecha de la venta", auto_now_add=True)
-    total = models.IntegerField("Precio total de la venta", default=0)
+    total = models.DecimalField("Precio total de la venta", max_digits=10, decimal_places = 2, default=0)
 
 class ItemVenta(models.Model):
     venta = models.ForeignKey("Venta", on_delete=models.CASCADE, related_name="Items")
