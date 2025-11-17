@@ -7,46 +7,141 @@
 
 {% block content %}
 <div class="container mt-4">
-    <form method="post">
+    <form method="post" id="venta-form">
         {% csrf_token %}
         {{ form|crispy }}
 
         <h4>Items de la venta</h4>
         {{ formset.management_form }}
+
         {% for item_form in formset %}
-            <div class="card mb-2 p-2">
+            <div class="card mb-2 p-2 venta-item">
                 <div class="card-body">
-                    {# Mostrar el campo "product" primero si existe, como un select #}
-                    {% if item_form.product %}
-                        <div class="form-group">
-                            {{ item_form.product.label_tag }}
-                            {{ item_form.product }}
-                            {{ item_form.product.errors }}
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div style="flex:1;">
+                            {% if item_form.product %}
+                                <div class="form-group">
+                                    {{ item_form.product.label_tag }}
+                                    {{ item_form.product }}
+                                    {{ item_form.product.errors }}
+                                </div>
+                            {% endif %}
+
+                            {% for field in item_form.visible_fields %}
+                                {% if field.name != 'product' %}
+                                    <div class="form-group">
+                                        {{ field.label_tag }}
+                                        {{ field }}
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                         </div>
-                    {% endif %}
-                    
-                    {# Renderizar el resto de campos del formset (excluyendo product si ya lo mostramos) #}
-                    {% for field in item_form.visible_fields %}
-                        {% if field.name != 'product' %}
-                            <div class="form-group">
-                                {{ field.label_tag }}
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+
+                        <!-- Botón eliminar visible siempre en la UI -->
+                        <div class="ms-2">
+                            <button type="button" class="btn btn-outline-danger btn-sm remove-item">Eliminar</button>
+                        </div>
+                    </div>
 
                     {% if item_form.instance.pk %}
-                        <div class="form-check">
+                        <div class="form-check mt-2">
                             <input class="form-check-input" type="checkbox" name="{{ item_form.prefix }}-DELETE" id="{{ item_form.prefix }}-DELETE">
-                            <label class="form-check-label" for="{{ item_form.prefix }}-DELETE">Eliminar</label>
+                            <label class="form-check-label" for="{{ item_form.prefix }}-DELETE">Eliminar (persistente)</label>
                         </div>
                     {% endif %}
                 </div>
             </div>
         {% endfor %}
 
-        <button type="submit" class="btn btn-success">Confirmar Venta</button>
+        <!-- Contenedor oculto con el empty_form del formset -->
+        <div id="empty-form" class="d-none">
+            {{ formset.empty_form|crispy }}
+        </div>
+
+        <div class="mb-3">
+            <button type="button" id="add-item" class="btn btn-primary">Agregar producto</button>
+            <button type="submit" class="btn btn-success">Confirmar Venta</button>
+        </div>
     </form>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const addBtn = document.getElementById('add-item');
+    const emptyFormDiv = document.getElementById('empty-form');
+    const form = document.getElementById('venta-form');
+
+    function getTotalFormsInput() {
+        return form.querySelector('input[name$="-TOTAL_FORMS"]');
+    }
+
+    // Añadir nuevo item
+    addBtn.addEventListener('click', function () {
+        const totalFormsInput = getTotalFormsInput();
+        let index = parseInt(totalFormsInput.value, 10);
+
+        let newFormHtml = emptyFormDiv.innerHTML.replace(/__prefix__/g, index);
+
+        const lastItem = form.querySelector('.venta-item:last-of-type');
+        if (lastItem) {
+            lastItem.insertAdjacentHTML('afterend', newFormHtml);
+        } else {
+            const buttonsDiv = form.querySelector('.mb-3');
+            buttonsDiv.parentNode.insertBefore(
+                (new DOMParser()).parseFromString(newFormHtml, 'text/html').body.firstChild,
+                buttonsDiv
+            );
+        }
+
+        totalFormsInput.value = index + 1;
+    });
+
+    // Delegación para eliminar items
+    form.addEventListener('click', function (e) {
+        if (!e.target.matches('.remove-item')) return;
+        const itemCard = e.target.closest('.venta-item');
+        if (!itemCard) return;
+
+        // Si existe input DELETE dentro del item -> marcarlo y ocultar
+        const deleteInput = itemCard.querySelector('input[name$="-DELETE"]');
+        if (deleteInput) {
+            deleteInput.checked = true;
+            itemCard.classList.add('d-none');
+            return;
+        }
+
+        // Si no existe DELETE (item agregado en esta sesión) -> remover DOM y reindexar
+        removeAndReindex(itemCard);
+    });
+
+    function removeAndReindex(itemCard) {
+        const totalFormsInput = getTotalFormsInput();
+        // eliminar nodo
+        itemCard.remove();
+
+        // decrementar TOTAL_FORMS
+        let total = parseInt(totalFormsInput.value, 10);
+        totalFormsInput.value = String(total - 1);
+
+        // reindexar todos los formularios visibles para mantener la secuencia 0..N-1
+        const items = Array.from(form.querySelectorAll('.venta-item'));
+        items.forEach((it, i) => {
+            // para cada input/select/textarea, actualizar name e id
+            const elements = it.querySelectorAll('input, select, textarea, label');
+            elements.forEach(el => {
+                if (el.name) {
+                    el.name = el.name.replace(/-\d+-/, `-${i}-`);
+                }
+                if (el.id) {
+                    el.id = el.id.replace(/-\d+-/, `-${i}-`);
+                }
+                if (el.htmlFor) {
+                    el.htmlFor = el.htmlFor.replace(/-\d+-/, `-${i}-`);
+                }
+            });
+        });
+    }
+});
+</script>
 {% endblock %}

@@ -53,6 +53,7 @@ VentaDetalleFormSet = inlineformset_factory(
     Venta,
     ItemVenta,
     form=ItemVentaForm,
+    fields=['producto', 'cantidad', 'precio_unitario'],
     extra=1,
     can_delete=False
 )
