@@ -10,6 +10,29 @@ from productos.models import MovimientoStock
 from .forms import VentaForm
 from django.shortcuts import redirect
 
+
+class VentaPDFView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    model = ItemVenta
+    template_name = "ventas/venta_pdf.html"
+    context_object_name = "items_venta"
+    permission_required = "ventas.view_venta"
+
+    def has_permission(self):
+        user = self.request.user
+        if user.is_superuser or user.is_staff or user.groups.filter(name='Administradores').exists():
+            return True
+        return (super().has_permission() and self.request.user.groups.filter(name='Ventas').exists())
+
+    def get_queryset(self):
+        venta_id = self.kwargs['pk']
+        return ItemVenta.objects.filter(venta__id=venta_id)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        venta_id = self.kwargs['pk']
+        context['venta'] = Venta.objects.get(id=venta_id)
+        return context
+
 class VentaListView(PermissionRequiredMixin, LoginRequiredMixin, ListView):
     model = Venta
     template_name = "ventas/venta_list.html"
@@ -71,7 +94,7 @@ class VentaCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
                     continue
                 detalle = form.save(commit=False)
                 detalle.venta = venta
-                detalle.subtotal = detalle.cantidad * detalle.precio_unitario
+                detalle.sub_total = detalle.cantidad * detalle.precio_unitario
                 detalle.save()
                 total += detalle.subtotal
                 if producto.stock < detalle.cantidad:

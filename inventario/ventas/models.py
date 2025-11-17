@@ -7,7 +7,7 @@ from productos.models import Producto
 
 class Venta(models.Model):
     codigo = models.IntegerField("Codigo de venta")
-    cliente = models.ForeignKey("cliente.Cliente", on_delete=models.CASCADE, max_length=20)
+    cliente = models.ForeignKey("cliente.Cliente", on_delete=models.CASCADE)
     fecha = models.DateTimeField("Fecha de la venta", auto_now_add=True)
     total = models.IntegerField("Precio total de la venta", default=0)
 
@@ -19,7 +19,8 @@ class ItemVenta(models.Model):
     sub_total = models.DecimalField("Subtotal", max_digits=10, decimal_places = 2, editable=False, default=0)
 
     def save(self, *args, **kwargs):
-        self.subtotal = self.cantidad * self.precio_unitario
+        from decimal import Decimal
+        self.sub_total = self.cantidad * Decimal(self.precio_unitario)
         super().save(*args, **kwargs)
 
     def __str__(self):

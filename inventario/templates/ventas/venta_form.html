@@ -37,8 +37,6 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-
-                        <!-- Botón eliminar visible siempre en la UI -->
                         <div class="ms-2">
                             <button type="button" class="btn btn-outline-danger btn-sm remove-item">Eliminar</button>
                         </div>
@@ -53,8 +51,6 @@
                 </div>
             </div>
         {% endfor %}
-
-        <!-- Contenedor oculto con el empty_form del formset -->
         <div id="empty-form" class="d-none">
             {{ formset.empty_form|crispy }}
         </div>
@@ -97,13 +93,11 @@ document.addEventListener('DOMContentLoaded', function () {
         totalFormsInput.value = index + 1;
     });
 
-    // Delegación para eliminar items
     form.addEventListener('click', function (e) {
         if (!e.target.matches('.remove-item')) return;
         const itemCard = e.target.closest('.venta-item');
         if (!itemCard) return;
 
-        // Si existe input DELETE dentro del item -> marcarlo y ocultar
         const deleteInput = itemCard.querySelector('input[name$="-DELETE"]');
         if (deleteInput) {
             deleteInput.checked = true;
@@ -111,23 +105,18 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Si no existe DELETE (item agregado en esta sesión) -> remover DOM y reindexar
         removeAndReindex(itemCard);
     });
 
     function removeAndReindex(itemCard) {
         const totalFormsInput = getTotalFormsInput();
-        // eliminar nodo
         itemCard.remove();
 
-        // decrementar TOTAL_FORMS
         let total = parseInt(totalFormsInput.value, 10);
         totalFormsInput.value = String(total - 1);
 
-        // reindexar todos los formularios visibles para mantener la secuencia 0..N-1
         const items = Array.from(form.querySelectorAll('.venta-item'));
         items.forEach((it, i) => {
-            // para cada input/select/textarea, actualizar name e id
             const elements = it.querySelectorAll('input, select, textarea, label');
             elements.forEach(el => {
                 if (el.name) {
