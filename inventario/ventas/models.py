@@ -27,6 +27,10 @@ class ItemVenta(models.Model):
     def save(self, *args, **kwargs):
         from decimal import Decimal
         self.sub_total = self.cantidad * Decimal(self.precio_unitario)
+        if not self.pk:
+        # Restar stock solo en la creación
+            self.producto.stock -= self.cantidad
+            self.producto.save()
         super().save(*args, **kwargs)
 
     def __str__(self):

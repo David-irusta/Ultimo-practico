@@ -51,6 +51,9 @@ class VentaListView(PermissionRequiredMixin, LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         search_query = self.request.GET.get('search', '')
+        codigo = self.request.GET.get("codigo")
+        if codigo:
+            queryset = queryset.filter(codigo__icontains=codigo)
 
         if search_query:
             queryset = queryset.filter(
@@ -62,6 +65,7 @@ class VentaListView(PermissionRequiredMixin, LoginRequiredMixin, ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["search_query"] = self.request.GET.get("search", "")
         context["search_query"] = self.request.GET.get("search", "")
         return context
         
@@ -100,7 +104,6 @@ class VentaCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
         if form.is_valid() and formset.is_valid():
             # Guardar la venta primero
             self.object = form.save()
-            
             # Luego guardar los items del formset
             formset.instance = self.object
             formset.save()

@@ -21,9 +21,18 @@ class ProductoListView(ListView):
     context_object_name = "productos"
     paginate_by = 5
 
+    
     def get_queryset(self):
         """Sobrescribe para permitir el filtrado por stock bajo."""
         queryset = super().get_queryset()
+
+        nombre = self.request.GET.get("nombre")
+        if nombre:
+            queryset = queryset.filter(nombre__icontains=nombre)
+        
+        sku = self.request.GET.get("sku")
+        if sku:
+            queryset = queryset.filter(sku__icontains=sku)
 
         stock_bajo = self.request.GET.get('stock_bajo')
         if stock_bajo:
@@ -38,6 +47,7 @@ class ProductoListView(ListView):
         """Añade una variable al contexto para saber si se está filtrando por stock bajo."""
         context = super().get_context_data(**kwargs)
         context["stock_bajo"] = self.request.GET.get("stock_bajo")
+        context["q"] = self.request.GET.get("q", "")
         return context
     
     def get(self, request, *args, **kwargs):

@@ -2,7 +2,7 @@
 
 
 
-###### **En este crearemos una tienda con usuarios, ventas y productos, usando el framework de Django y personalizando con Bootstrap e CrispyForms** 
+###### **En este crearemos una tienda con usuarios, ventas y productos, usando el framework de Django y personalizando con Bootstrap e CrispyForms**
 
 
 
@@ -18,9 +18,6 @@
 * ###### **Borrar productos**
 * ###### **Ver detalles**
 * ###### **Editar el producto**
-* ###### **Editar su stock (ya sea por ejemplo por una reposicion)**
-
-
-
-###### **-- Se iran agregando nuevas funciones para terminar el proyecto --**
-
+* ###### **Editar su stock (ya sea por ejemplo por una reposición)**
+* ###### Agregado carga masiva de producto, donde se uso el archivo: productos.csv
+* 

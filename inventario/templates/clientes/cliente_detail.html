@@ -20,13 +20,13 @@
                     <strong>Direccion:</strong> {{ cliente.direccion }}
                 </li>
                 <li class="list-group-item">
-                    <strong>Dni:</strong> {{ cliente.numero_documento}}
+                    <strong>Dni:</strong> {{ cliente.numero_documento }}
                 </li>
                 <li class="list-group-item">
                     <strong>Telefono:</strong> {{ cliente.telefono }}
                 </li>
             </ul>
-            <a href="{% url 'productos:producto_list' %}" class="btn btn-secondary btn-block">Volver al listado</a>
+            <a href="{% url 'clientes:cliente_list' %}" class="btn btn-secondary btn-block">Volver al listado</a>
         </div>
     </div>
 </div>

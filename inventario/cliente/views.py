@@ -26,6 +26,24 @@ class ClienteListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
             messages.info(request, "No hay clientes disponibles.")
 
         return response
+    def get_queryset(self):
+        """Sobrescribe para permitir el filtrado por stock bajo."""
+        queryset = super().get_queryset()
+        nombre = self.request.GET.get("nombre")
+        if nombre:
+            queryset = queryset.filter(nombre__icontains=nombre)
+        
+        numero_documento = self.request.GET.get("DNI")
+        if numero_documento:
+            queryset = queryset.filter(numero_documento__icontains=numero_documento)
+
+        return queryset.order_by("nombre")
+    
+    def get_context_data(self, **kwargs):
+        """Añade una variable al contexto para saber si se está filtrando por stock bajo."""
+        context = super().get_context_data(**kwargs)
+        context["q"] = self.request.GET.get("q", "")
+        return context
 
 class ClienteCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Cliente
