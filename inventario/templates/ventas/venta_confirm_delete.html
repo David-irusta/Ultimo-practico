@@ -4,12 +4,32 @@
 
 
 {% block content %}
-    <h1>Eliminar producto</h1>
-    <p>Estas seguro de eliminar? {{ venta.codigo }}</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Eliminar</button>
-        <a href="{% url 'ventas:venta_list' %}" class="btn btn-secondary">Cancelar</a>
-    </form>
+<div class ="container mt-5">
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-header bg-danger text-white text-center">
+            <h4>Confirmar eliminación de venta</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item">
+                    <strong>ID de Venta:</strong> {{ venta.id }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Fecha de Venta:</strong> {{ venta.fecha|date:"d/m/Y H:i" }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Cliente:</strong> {{ venta.cliente.nombre }}
+                </li>
+            </ul>
+            <form method="post">
+                {% csrf_token %}
+                <div class="alert alert-danger" role="alert">
+                    ¿Estás seguro de que deseas eliminar esta venta?
+                </div>
+                <button type="submit" class="btn btn-danger btn-block">Eliminar Venta</button>
+                <a href="{% url 'ventas:venta_list' %}" class="btn btn-secondary btn-block mt-2">Cancelar</a>
+        </div>
+    </div>
+</div>
 {% endblock content %}
     

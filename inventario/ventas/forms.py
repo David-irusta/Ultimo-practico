@@ -4,6 +4,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from django.forms import inlineformset_factory
 
+
 class VentaForm(forms.ModelForm):
     class Meta:
         model = Venta
@@ -14,7 +15,6 @@ class VentaForm(forms.ModelForm):
         labels = {
             'codigo': 'Codigo de venta',
             'cliente': 'Cliente',
-            'fecha': 'Fecha de la venta',
             'total': 'Precio total de la venta',
         }
         help_texts = {
@@ -22,7 +22,6 @@ class VentaForm(forms.ModelForm):
         }
         def __init__(self, *args, **kwargs):
             super(VentaForm, self).__init__(*args, **kwargs)
-            self.helper = FormHelper()
             self.helper.form_method = 'post'
             self.helper.add_input(Submit('submit', 'Guardar Venta'))
         
@@ -37,18 +36,21 @@ class ItemVentaForm(forms.ModelForm):
             'precio_unitario': 'Precio',
         }
 
-        def save(self, commit=True):
-            item_venta = super().save(commit=False)
-            item_venta.precio_unitario = item_venta.producto.precio_venta
-            if commit:
-                item_venta.save()
-            return item_venta
+    def save(self, commit=True):
+        item_venta = super().save(commit=False)
+        if item_venta.producto:
+            item_venta.precio_unitario = item_venta.producto.precio_unitario
+        if commit:
+            item_venta.save()
+        return item_venta
 
-        def __init__(self, *args, **kwargs):
-            super(ItemVentaForm, self).__init__(*args, **kwargs)
-            self.helper = FormHelper()
-            self.helper.form_method = 'post'
-            self.helper.add_input(Submit('submit', 'Agregar Item'))
+    def __init__(self, *args, **kwargs):
+        super(ItemVentaForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Agregar Item'))
+        self.helper.add_input(Submit('submit', 'Guardar Venta'))
+
 VentaDetalleFormSet = inlineformset_factory(
     Venta,
     ItemVenta,

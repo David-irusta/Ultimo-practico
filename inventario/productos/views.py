@@ -113,6 +113,9 @@ class ProductoUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView
     permission_required = "productos.change_producto"
 
     def has_permission(self):
+        user = self.request.user
+        if user.is_superuser or user.is_staff or user.groups.filter(name='Administradores').exists():
+            return True
         return (super().has_permission() and self.request.user.groups.filter(name='Stock').exists())
 
     def form_valid(self, form):

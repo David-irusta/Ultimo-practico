@@ -25,15 +25,15 @@
                 <td>${{ venta.total }}</td>
                 <td>
                     <a href="{% url 'ventas:venta_form' venta.pk %}" class="btn btn-primary" title="Editar venta">
-                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-edit"></i>
                     </a>
                     <a href="{% url 'ventas:venta_detail' venta.pk %}" class="btn btn-info" title="Ver detalle">
-                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-eye"></i>
                     </a>
                     <a href="{% url 'ventas:venta_delete' venta.pk %}" class="btn btn-danger" title ="Eliminar">
                         <i class="fas fa-trash-alt"></i>
                     </a>
-                    <a href="{% url 'ventas:venta_pdf' venta.pk %}" class="btn btn-success" title=" Descacargar PDF">
+                    <a href="{% url 'ventas:venta_pdf' venta.pk %}" class="btn btn-success" title="Comprobante">
                         <i class="fas fa-info"></i>
                     </a>
                 </td>
