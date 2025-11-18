@@ -61,50 +61,20 @@
                                     {% endif %}
                                 {% endfor %}
                             </div>
-
-                            <div class="ms-2">
-                                <button type="button" class="btn btn-outline-danger btn-sm remove-item">
-                                    Eliminar
-                                </button>
-                            </div>
                         </div>
-
-                        {% if item_form.instance.pk %}
-                            <div class="form-check mt-2">
-                                {{ item_form.DELETE }}
-                                {{ item_form.DELETE.label_tag }}
-                            </div>
-                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
         </div>
 
-        <!-- Empty form oculto para JS (mantener formato de card) -->
-        <div id="empty-form" class="d-none">
-            <div class="card mb-2 p-2 venta-item">
-                <div class="card-body">
-                    {% for field in formset.empty_form.visible_fields %}
-                        {% if field.name != "DELETE" %}
-                            <div class="form-group">
-                                {{ field.label_tag }}
-                                {{ field }}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-
         <div class="mb-3 mt-3">
-            <button type="button" id="add-item" class="btn btn-primary">Agregar producto</button>
             <button type="submit" id="submit-btn" class="btn btn-success">Guardar</button>
             <a href="{% url 'ventas:venta_list' %}" class="btn btn-secondary">Cancelar</a>
         </div>
     </form>
 </div>
 
-<script>
+<!--<script>
 document.addEventListener('DOMContentLoaded', function () {
     const addBtn = document.getElementById("add-item");
     const emptyFormDiv = document.getElementById("empty-form");
@@ -165,5 +135,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
-</script>
+</script>-->
 {% endblock content %}

@@ -154,6 +154,17 @@ class VentaUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
         response = super().form_valid(form)
         messages.success(self.request, "Venta actualizada exitosamente.")
         return response   
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        if self.request.POST:
+            from .forms import VentaDetalleFormSet
+            context['formset'] = VentaDetalleFormSet(self.request.POST)
+        else:
+            from .forms import VentaDetalleFormSet
+            context['formset'] = VentaDetalleFormSet()
+        return context
 
 class VentaDetailView(PermissionRequiredMixin, LoginRequiredMixin, ListView):
     model = ItemVenta
