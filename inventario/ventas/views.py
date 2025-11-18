@@ -69,102 +69,102 @@ class VentaCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     model = Venta
     form_class = VentaForm
     template_name = "ventas/venta_form.html"
-    success_url = reverse_lazy("productos:producto_list")
+    success_url = reverse_lazy("ventas:venta_list")
     permission_required = "ventas.add_venta"
 
     def has_permission(self):
         user = self.request.user
         if user.is_superuser or user.is_staff or user.groups.filter(name='Administradores').exists():
             return True
-        return (super().has_permission() and self.request.user.groups.filter(name='Ventas').exists())
+        return super().has_permission() and self.request.user.groups.filter(name='Ventas').exists()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from .forms import VentaDetalleFormSet
+        if self.request.POST:
+            context['formset'] = VentaDetalleFormSet(self.request.POST)
+        else:
+            context['formset'] = VentaDetalleFormSet()
+        
+        # Agregar variable para el template
+        context['modo_edicion'] = False
+        context['titulo'] = 'Crear Venta'
+        
+        return context
 
     def form_valid(self, form):
         context = self.get_context_data()
         formset = context['formset']
-
-        if formset.is_valid():
-            venta = form.save(commit= False)
-            venta.fecha_venta = timezone.now()
-            venta.total = 0
-            venta.save()
-
-            total = 0
-
-            for form in formset:
-                if not form.cleaned_data or form.cleaned_data.get('DELETE'):
-                    continue
-                detalle = form.save(commit=False)
-                detalle.venta = venta
-                detalle.sub_total = detalle.cantidad * detalle.precio_unitario
-                detalle.save()
-                total += detalle.sub_total
-                producto= detalle.producto
-                if producto.stock < detalle.cantidad:
-                    messages.error(self.request, f"No hay suficiente stock para el producto {producto.nombre}.")
-                    venta.delete()
-                    return self.render_to_response(self.get_context_data(form=form))
-                if not form.cleaned_data or form.cleaned_data.get('DELETE'):
-                    continue
-
-                # Actualizar el stock del producto
-                producto = detalle.producto
-                producto.stock -= detalle.cantidad
-                producto.save()
-
-                # Registrar el movimiento de stock
-                MovimientoStock.objects.create(
-                    producto=producto,
-                    cantidad=-detalle.cantidad,
-                    tipo='VENTA',
-                    fecha=timezone.now()
-                )
-            venta.total = total
-            venta.save()
+        
+        if form.is_valid() and formset.is_valid():
+            # Guardar la venta primero
+            self.object = form.save()
+            
+            # Luego guardar los items del formset
+            formset.instance = self.object
+            formset.save()
+            self.object.calcular_total()
+            
             messages.success(self.request, "Venta creada exitosamente.")
-            return redirect('ventas:venta_detail', pk=venta.pk)
+            return super().form_valid(form)
         else:
             return self.render_to_response(self.get_context_data(form=form))
-        
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        if self.request.POST:
-            from .forms import VentaDetalleFormSet
-            context['formset'] = VentaDetalleFormSet(self.request.POST)
-        else:
-            from .forms import VentaDetalleFormSet
-            context['formset'] = VentaDetalleFormSet()
-        return context
 
 class VentaUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     model = Venta
     form_class = VentaForm
     template_name = "ventas/venta_form.html"
-    success_url = reverse_lazy("ventas:venta_list") # Esta URL de éxito final se usará si todo va bien
+    success_url = reverse_lazy("ventas:venta_list")
     permission_required = "ventas.change_venta"
 
     def has_permission(self):
         user = self.request.user
         if user.is_superuser or user.is_staff or user.groups.filter(name='Administradores').exists():
             return True
-        # Permiso adicional para el grupo 'Ventas'
         return super().has_permission() and self.request.user.groups.filter(name='Ventas').exists()
 
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        messages.success(self.request, "Venta actualizada exitosamente.")
-        return response   
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
+        from .forms import VentaDetalleFormSet
         if self.request.POST:
-            from .forms import VentaDetalleFormSet
-            context['formset'] = VentaDetalleFormSet(self.request.POST)
+            context['formset'] = VentaDetalleFormSet(
+                self.request.POST, 
+                instance=self.object  # ⚠️ IMPORTANTE: agregar instance aquí también
+            )
         else:
-            from .forms import VentaDetalleFormSet
-            context['formset'] = VentaDetalleFormSet()
+            context['formset'] = VentaDetalleFormSet(
+                instance=self.object  # ⚠️ IMPORTANTE: agregar instance
+            )
+        
+        # Agregar variable para controlar el botón en el template
+        context['modo_edicion'] = True
+        context['titulo'] = f'Editar Venta #{self.object.codigo}'
+        
         return context
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        formset = context['formset']
+        
+        # Validar tanto el form como el formset
+        if form.is_valid() and formset.is_valid():
+            # Guardar la venta primero
+            self.object = form.save()
+            
+            # Luego guardar los items del formset
+            formset.instance = self.object  # ⚠️ IMPORTANTE: asignar la instancia
+            formset.save()
+            self.object.calcular_total()
+            
+            messages.success(self.request, "Venta actualizada exitosamente.")
+            return super().form_valid(form)
+        else:
+            # Si hay errores, mostrar el form con errores
+            return self.render_to_response(self.get_context_data(form=form))
+
+    def form_invalid(self, form):
+        messages.error(self.request, "Por favor corrige los errores en el formulario.")
+        return super().form_invalid(form)
 
 class VentaDetailView(PermissionRequiredMixin, LoginRequiredMixin, ListView):
     model = ItemVenta

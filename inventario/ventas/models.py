@@ -10,6 +10,12 @@ class Venta(models.Model):
     cliente = models.ForeignKey("cliente.Cliente", on_delete=models.CASCADE)
     fecha = models.DateTimeField("Fecha de la venta", auto_now_add=True)
     total = models.DecimalField("Precio total de la venta", max_digits=10, decimal_places = 2, default=0)
+    
+    def calcular_total(self):
+        total = sum(item.sub_total for item in self.Items.all())
+        self.total = total
+        self.save()
+        return total
 
 class ItemVenta(models.Model):
     venta = models.ForeignKey("Venta", on_delete=models.CASCADE, related_name="Items")

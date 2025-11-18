@@ -5,6 +5,16 @@
 {% block title %}Listado de Ventas{% endblock %}
 {% block header %}Listado de Ventas{% endblock %}
 
+
+{% block extra_buttons %}
+<div>
+    <a href="{% url 'ventas:venta_create' %}" class="btn btn-success">
+        <i class="fas fa-plus"></i> Nueva venta
+    </a>
+</div>
+{% endblock extra_buttons %}
+    
+
 {% block content %}
     <table class="table table-bordered table-striped table-hover">
         <thead class="thead-dark">

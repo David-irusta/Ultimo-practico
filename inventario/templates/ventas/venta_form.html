@@ -1,139 +1,110 @@
-{% extends 'ventas/base.html' %}
+{% extends "ventas/base.html" %}
 {% load crispy_forms_tags %}
-{% load bootstrap4 %}
-
-{% block title %}{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Venta{% endblock %}
-{% block header %}{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Venta{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-
-    {# Mostrar errores globales arriba para que no queden "ocultos" #}
-    <div id="server-errors">
-        {% if form.non_field_errors %}
-            <div class="alert alert-danger">
-                {{ form.non_field_errors }}
-            </div>
-        {% endif %}
-
-        {% if form.errors %}
-            <div class="alert alert-warning">
-                <strong>Errores del formulario principal:</strong>
-                <pre>{{ form.errors }}</pre>
-            </div>
-        {% endif %}
-
-        {% if formset.non_field_errors %}
-            <div class="alert alert-danger">
-                {{ formset.non_field_errors }}
-            </div>
-        {% endif %}
-    </div>
-
-    <form method="post" id="venta-form" novalidate>
+    <h2>{{ titulo }}</h2>
+    
+    <form method="post">
         {% csrf_token %}
-        {{ form|crispy }}
-
-        <h4 class="mt-4">Items de la venta</h4>
-
-        {{ formset.management_form }}
-
-        <div id="items-container">
-            {% for item_form in formset %}
-                <div class="card mb-2 p-2 venta-item">
-                    <div class="card-body">
-                        {# Mostrar errores del formset por fila #}
-                        {% if item_form.non_field_errors %}
-                            <div class="alert alert-danger">
-                                {{ item_form.non_field_errors }}
+        
+        <!-- Datos principales de la venta -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5>Información de la Venta</h5>
+            </div>
+            <div class="card-body">
+                {{ form|crispy }}
+            </div>
+        </div>
+        
+        <!-- Sección de productos -->
+        <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Productos</h5>
+                
+                <!-- Botón condicional para agregar producto -->
+                {% if not modo_edicion %}
+                <button type="button" id="agregar-mas" class="btn btn-success btn-sm">
+                    + Agregar Producto
+                </button>
+                {% endif %}
+            </div>
+            
+            <div class="card-body">
+                {{ formset.management_form }}
+                <div id="productos-container">
+                    {% for form_detalle in formset %}
+                    <div class="producto-form mb-3 p-3 border rounded">
+                        <div class="row">
+                            <div class="col-md-4">
+                                {{ form_detalle.producto|as_crispy_field }}
                             </div>
-                        {% endif %}
-
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div style="flex:1;">
-                                {% for field in item_form.visible_fields %}
-                                    {% if field.name != "DELETE" %}
-                                        <div class="form-group">
-                                            {{ field.label_tag }}
-                                            {{ field }}
-                                            {{ field.errors }}
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
+                            <div class="col-md-2">
+                                {{ form_detalle.cantidad|as_crispy_field }}
+                            </div>
+                            <div class="col-md-3">
+                                {{ form_detalle.precio_unitario|as_crispy_field }}
+                            </div>
+                            <div class="col-md-2">
+                                {% if form_detalle.instance.pk %}
+                                    {{ form_detalle.DELETE|as_crispy_field }}
+                                {% endif %}
                             </div>
                         </div>
+                        {% for hidden in form_detalle.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
                     </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
+            </div>
         </div>
-
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="text-end mb-0">
+                    Total: ${{ venta.total|default:0|floatformat:2 }}
+                </h5>
+            </div>
+        </div>
+        
+        <!-- Botones de acción -->
         <div class="mb-3 mt-3">
-            <button type="submit" id="submit-btn" class="btn btn-success">Guardar</button>
+            <button type="submit" class="btn btn-success">
+                {% if modo_edicion %}Actualizar{% else %}Crear{% endif %} Venta
+            </button>
             <a href="{% url 'ventas:venta_list' %}" class="btn btn-secondary">Cancelar</a>
         </div>
     </form>
 </div>
 
-<!--<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const addBtn = document.getElementById("add-item");
-    const emptyFormDiv = document.getElementById("empty-form");
-    const itemsContainer = document.getElementById("items-container");
-    const form = document.getElementById("venta-form");
-    const submitBtn = document.getElementById("submit-btn");
-
-    function totalForms() {
-        return form.querySelector('input[name$="-TOTAL_FORMS"]');
-    }
-
-    // Agregar nuevo item
-    addBtn.addEventListener("click", function () {
-        let index = parseInt(totalForms().value);
-        let newFormHtml = emptyFormDiv.innerHTML.replace(/__prefix__/g, index);
-        itemsContainer.insertAdjacentHTML("beforeend", newFormHtml);
-        totalForms().value = index + 1;
-    });
-
-    // Eliminar item
-    form.addEventListener("click", function (e) {
-        if (!e.target.matches(".remove-item")) return;
-        const card = e.target.closest(".venta-item");
-        const deleteInput = card.querySelector('input[name$="-DELETE"]');
-        if (deleteInput) {
-            deleteInput.checked = true;
-            card.classList.add("d-none");
-            return;
-        }
-        removeAndReindex(card);
-    });
-
-    function removeAndReindex(card) {
-        card.remove();
-        let total = parseInt(totalForms().value);
-        totalForms().value = total - 1;
-        let forms = document.querySelectorAll(".venta-item");
-        forms.forEach((item, i) => {
-            item.querySelectorAll("input, select, textarea, label").forEach(el => {
-                if (el.name) el.name = el.name.replace(/-\d+-/, `-${i}-`);
-                if (el.id) el.id = el.id.replace(/-\d+-/, `-${i}-`);
-                if (el.htmlFor) el.htmlFor = el.htmlFor.replace(/-\d+-/, `-${i}-`);
-            });
+<!-- Script para agregar más formularios dinámicamente (solo en creación) -->
+{% if not modo_edicion %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const agregarBtn = document.getElementById('agregar-mas');
+    const totalForms = document.getElementById('id_itemventa_set-TOTAL_FORMS');
+    const container = document.getElementById('productos-container');
+    
+    agregarBtn.addEventListener('click', function() {
+        const formCount = parseInt(totalForms.value);
+        const newForm = container.children[0].cloneNode(true);
+        
+        // Actualizar los IDs y nombres del nuevo formulario
+        newForm.innerHTML = newForm.innerHTML.replace(/-\d+-/g, `-${formCount}-`);
+        newForm.innerHTML = newForm.innerHTML.replace(/\[\d+\]/g, `[${formCount}]`);
+        
+        // Limpiar los valores
+        newForm.querySelectorAll('input, select').forEach(input => {
+            if (input.type !== 'hidden') {
+                input.value = '';
+            }
         });
-    }
-
-    // Antes de enviar: mostrar en consola lo que se va a enviar (debug)
-    form.addEventListener('submit', function (e) {
-        // Serializar inputs y mostrarlos (no evita el envío)
-        const data = new FormData(form);
-        const entries = Array.from(data.entries());
-        console.log('=== Enviando POST venta ===');
-        console.log(entries);
-
-        // Mostrar un spinner / deshabilitar botón para ver que se hizo click
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'Enviando…';
+        
+        container.appendChild(newForm);
+        totalForms.value = formCount + 1;
     });
-
 });
-</script>-->
-{% endblock content %}
+</script>
+{% endif %}
+{% endblock %}
