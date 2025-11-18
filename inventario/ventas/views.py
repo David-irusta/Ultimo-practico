@@ -71,6 +71,7 @@ class VentaCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     template_name = "ventas/venta_form.html"
     success_url = reverse_lazy("ventas:venta_list")
     permission_required = "ventas.add_venta"
+    paginate_by = 5
 
     def has_permission(self):
         user = self.request.user

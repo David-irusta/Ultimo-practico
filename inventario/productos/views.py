@@ -48,12 +48,12 @@ class ProductoListView(ListView):
         return response
     
 
-class ProductoDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
+class ProductoDetailView(PermissionRequiredMixin, LoginRequiredMixin, DetailView):
     """Muestra los detalles de un producto específico."""
     model = Producto
     template_name = "productos/producto_detail.html"
     context_object_name = "producto"
-    permission_required = "productos.detail_producto"
+    permission_required = "productos.view_producto"
 
     def has_permission(self):
         user = self.request.user
