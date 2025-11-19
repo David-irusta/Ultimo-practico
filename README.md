@@ -2,22 +2,21 @@
 
 #### **En este crearemos una tienda con usuarios, ventas y productos, usando el framework de Django y personalizando con Bootstrap e CrispyForms**
 
-
 #### **En este trabajo se puede hacer:**
 
 
 
 ## Productos
 
-##### **Agregar productos**
+###### **Agregar productos**
 
-##### **Borrar productos**
+###### **Borrar productos**
 
-##### **Ver detalle de productos**
+###### **Ver detalle de productos**
 
-##### **Editar el producto**
+###### **Editar el producto**
 
-##### **Editar stock de producto (ya sea por ejemplo por una reposición)**
+###### **Editar stock de producto (ya sea por ejemplo por una reposición)**
 
 ###### **Agregado carga masiva de producto, donde se usó el archivo: productos.csv**
 
@@ -69,11 +68,8 @@
 
 ## Cómo clonar
 ```bash
-git clone https://github.com/David-irusta/Ultimo-practico
-cd inventario
-
-
-
+git clone https://github.com/usuario/mi-proyecto-inventario.git
+cd mi-proyecto-inventario
 
 
 
