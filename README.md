@@ -2,6 +2,17 @@
 
 #### **En este crearemos una tienda con usuarios, ventas y productos, usando el framework de Django y personalizando con Bootstrap e CrispyForms**
 
+
+## Requisitos
+- Docker
+- Docker Compose
+
+## Cómo clonar
+```bash
+git clone https://github.com/David-irusta/Ultimo-practico
+cd inventario
+
+
 #### **En este trabajo se puede hacer:**
 
 
