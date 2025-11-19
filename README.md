@@ -3,31 +3,21 @@
 #### **En este crearemos una tienda con usuarios, ventas y productos, usando el framework de Django y personalizando con Bootstrap e CrispyForms**
 
 
-## Requisitos
-- Docker
-- Docker Compose
-
-## Cómo clonar
-```bash
-git clone https://github.com/David-irusta/Ultimo-practico
-cd inventario
-
-
 #### **En este trabajo se puede hacer:**
 
 
 
-###### **--Productos--**
+## Productos
 
-###### **Agregar productos**
+## Agregar productos
 
-###### **Borrar productos**
+## Borrar productos
 
-###### **Ver detalle de productos**
+## Ver detalle de productos
 
-###### **Editar el producto**
+## Editar el producto
 
-###### **Editar stock de producto (ya sea por ejemplo por una reposición)**
+## Editar stock de producto (ya sea por ejemplo por una reposición)
 
 ###### **Agregado carga masiva de producto, donde se usó el archivo: productos.csv**
 
@@ -74,6 +64,15 @@ cd inventario
 ###### 
 
 ###### **Esta aplicación web además permite grupos de usuarios donde admin controla todas las apps, Stock unicamente producto y el movimiento de stock y Vendedor la app de ventas y clientes.**
+
+## Requisitos
+- Docker
+- Docker Compose
+
+## Cómo clonar
+```bash
+git clone https://github.com/David-irusta/Ultimo-practico
+cd inventario
 
 
 
