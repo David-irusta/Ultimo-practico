@@ -11,14 +11,14 @@ services:
       - db-data:/var/lib/postgresql/data
 
   web:
+    env_file:
+      - .env
     build: .
     command: sh -c "python manage.py makemigrations && python manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     volumes:
     - ./inventario:/inventario
-    env_file:
-    - .env
     environment:
       DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
     depends_on:
