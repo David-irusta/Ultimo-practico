@@ -62,5 +62,15 @@
 
 ###### **Esta aplicación web además permite grupos de usuarios donde admin controla todas las apps, Stock unicamente producto y el movimiento de stock y Vendedor la app de ventas y clientes.**
 
+## Requisitos
+- Docker
+- Docker Compose
+
+## Cómo clonar
+```bash
+git clone https://github.com/usuario/mi-proyecto-inventario.git
+cd mi-proyecto-inventario
+
+
 
 
