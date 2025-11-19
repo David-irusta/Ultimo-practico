@@ -9,21 +9,19 @@
 
 ## Productos
 
-## Agregar productos
+##### **Agregar productos**
 
-## Borrar productos
+##### **Borrar productos**
 
-## Ver detalle de productos
+##### **Ver detalle de productos**
 
-## Editar el producto
+##### **Editar el producto**
 
-## Editar stock de producto (ya sea por ejemplo por una reposición)
+##### **Editar stock de producto (ya sea por ejemplo por una reposición)**
 
 ###### **Agregado carga masiva de producto, donde se usó el archivo: productos.csv**
 
-###### **–Ventas–**
-
-###### 
+## Ventas
 
 ###### **Crear venta con uno o mas productos**
 
@@ -37,7 +35,7 @@
 
 ###### 
 
-###### **--Clientes--**
+##  Clientes
 
 ###### 
 
@@ -51,7 +49,7 @@
 
 ###### 
 
-###### **–-Accounts–-**
+##  Accounts
 
 ###### 
 
@@ -61,7 +59,7 @@
 
 ###### **Registrarse**
 
-###### 
+
 
 ###### **Esta aplicación web además permite grupos de usuarios donde admin controla todas las apps, Stock unicamente producto y el movimiento de stock y Vendedor la app de ventas y clientes.**
 
