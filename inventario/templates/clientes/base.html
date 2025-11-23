@@ -48,6 +48,29 @@
                     </a>
                 </li>
             </ul>
+             <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="navbar-text mr-2">
+                            👤 {{ user.username }}
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{% url 'account_logout' %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-light btn-sm">
+                                Cerrar sesion
+                            </button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light btn-sm" href="{% url 'account_login' %}">
+                            Iniciar sesion
+                        </a>
+                    </li>
+                {% endif %}
+             </ul>
         </div>
     </div>
   </nav>  
